@@ -27,18 +27,11 @@ const PayloadProvider = props => {
         fetchForm();
     }
     const developQuestion = qn => {
-        const properties = {};
-        if (JSON.stringify(qn.properties) === '{}' && qn.type === "CHOICE") {
+        //  console.log(qn.properties);
 
-            properties.choices = [
-                { label: "", id: "0" },
-                { label: "", id: "1" }
-            ]
-            properties.randomize = false;
-            properties.allow_multiple_selection = true;
-
+        if (qn.type === "RATING" && typeof qn.properties.shape === "undefined") {
+            qn.properties = { shape: "star" }
         }
-        qn.properties = { ...properties };
         const questions = form.questions.map(q => q.q_id === qn.q_id ? qn : q);
         setForm({ ...form, questions });
 

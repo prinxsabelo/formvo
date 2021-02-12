@@ -42,7 +42,7 @@ const QuestionContextProvider = (props) => {
 
     //ShowQuestion function works only on desktop..
     const showQuestion = (form_id, q_id, type) => {
-        console.log(form_id, q_id, type);
+        //  console.log(form_id, q_id, type);
         setQuestionDetail({ form_id, q_id });
         let questionType = questionTypes.find(q => q.type === type);
         setCurrentType(questionType.type);

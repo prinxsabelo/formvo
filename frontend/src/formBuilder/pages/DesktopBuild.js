@@ -11,19 +11,23 @@ const DesktopBuild = () => {
     const [question, setQuestion] = useState();
 
     const changeHandler = e => {
+        const { q_id, properties, type, title, response } = question;
 
-        const { type, properties } = question;
+        if (e.target.name === "title") {
+            developQuestion({ title: e.target.value, response, q_id, type, properties });
+        } else if (e.target.name === "response") {
+            developQuestion({ response: e.target.value, title, q_id, type, properties });
+        }
 
-        developQuestion({ title: e.target.value, q_id, properties, type });
     }
     useEffect(() => {
         if (form && form.questions) {
             let q = (form.questions.find(x => x.q_id === q_id));
             setQuestion(q);
             if (q && (q.type !== currentType)) {
-                let { q_id, title, properties } = q;
+                let { q_id, title, response, properties } = q;
 
-                developQuestion({ title, q_id, type: currentType, properties });
+                developQuestion({ title, response, q_id, type: currentType, properties });
             }
             // Send Form Data here.. for db update
             if (form) {
@@ -35,18 +39,23 @@ const DesktopBuild = () => {
 
     return (
         <>
-            <div className="hidden md:flex flex-col items-center pt-12 build shadow bg-white">
+            <div className="hidden md:flex flex-col items-center build shadow-xl p-2 m-2 ">
                 {currentType && question ?
                     <>
                         <BuildHeader  {...question} >
                             <Properties {...question} />
                         </BuildHeader>
-                        <form className="flex flex-col md:justify-end  p-1 bg-white md:w-3/4 ">
-                            <textarea className="px-4 py-2 border w-full text-lg rounded-md question-textarea
-                                    focus:outline-none focus:shadow-md hover:shadow-md "
-                                onChange={changeHandler} placeholder="Type your Question Here.." value={question.title}
-                            >
-                            </textarea>
+                        <form className="flex flex-col md:justify-end  p-1 bg-white md:w-3/4 border shadow">
+                            <div>
+                                <textarea className="px-4 py-2 border w-full text-lg rounded-md question-textarea
+                                    focus:outline-none focus:border-red-400 hover:shadow-md" name="title"
+                                    onChange={changeHandler} placeholder="Type your Question Here.." value={question.title}
+                                ></textarea>
+                                <input placeholder="Give a response for your question if you like.."
+                                    value={question.response} onChange={changeHandler} name="response"
+                                    className="border w-full px-4 py-1 rounded-md  focus:outline-none focus:border-red-400" />
+                            </div>
+
                             {(question && question.type) &&
                                 <>
                                     <QuestionType {...question} />

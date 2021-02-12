@@ -38,7 +38,7 @@ const Drawer = props => {
                             ${(qt.type === currentType && typeAction !== 'new') ? 'bg-gray-800  text-yellow-100' : ''}`}
                         >
                             <div className="p-2 ">
-                                <QTypeIcon type={qt.type} />
+                                <QTypeIcon color="red" className="w-8" type={qt.type} />
                             </div>
                             <div className="tracking-wide">
                                 <span className="text-normal"> {qt.label}</span>

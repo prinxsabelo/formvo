@@ -1,9 +1,16 @@
+import Rating from "./Rating";
+
 const NoChoice = (props) => {
+
+
     return (
-        <div>
-            {props.type}
-            No Choice..
-        </div>
+        <>
+            {props.type === "RATING" &&
+                <Rating {...props} />
+
+            }
+
+        </>
     )
 }
 export default NoChoice;

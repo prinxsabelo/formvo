@@ -3,21 +3,24 @@ import { NavLink, useRouteMatch } from "react-router-dom";
 import { Payload } from "../../../context/Payload";
 
 import QTypeIcon from "../../../shared/collection/QTypeIcon";
-const QuestionItem = ({ q_id, title, type }) => {
-    const { showQuestion } = useContext(Payload);
+const QuestionItem = ({ q_id, title, type, properties }) => {
+    const { showQuestion, questionDetail } = useContext(Payload);
 
     const { url } = useRouteMatch();
     return (
         <>
-            <div
-                className="hidden md:flex q-item text-sm pr-2 rounded m-2 shadow  whitespace-no-wrap min-h-12 items-center
-                border-2 cursor-pointer justify-between break-words relative"
+            <div onClick={() => showQuestion(q_id, type)}
+                className={`hidden md:flex q-item text-sm pr-2 rounded m-2 shadow  whitespace-no-wrap min-h-12 items-center
+                border-2 cursor-pointer justify-between break-words relative
+                ${questionDetail.q_id === q_id && 'bg-gray-100'}
+                `}
             >
-                <div onClick={() => showQuestion(q_id, type)} className="w-full py-1 flex items-center">
-                    <div className="px-1 mr-1 ">
-                        <QTypeIcon type={type} />
+
+                <div className="w-full py-1 flex items-center">
+                    <div className="px-2 bg-gray-800 flex absolute top-0 bottom-0 ">
+                        <QTypeIcon color="white" className="w-8 text-gray-100" type={type} shape={properties.shape} />
                     </div>
-                    <div>
+                    <div className="ml-14">
                         {title}
                     </div>
                 </div>
@@ -38,8 +41,8 @@ const QuestionItem = ({ q_id, title, type }) => {
             <div className="md:hidden">
                 <div className="flex items-center my-1 border-b-2 shadow space-x-1 w-full text-sm font-medium">
                     <NavLink className="flex items-center w-11/12" to={`${url}/${q_id}`}>
-                        <div className="flex bg-gray-200 p-2 m-1 rounded-full h-10 w-10 ">
-                            <QTypeIcon type={type} />
+                        <div className="flex bg-gray-200 p-2 m-1 rounded-full h-12 w-12 ">
+                            <QTypeIcon color="red" className="w-10" type={type} shape={properties.shape} />
                         </div>
                         <div className=" py-4 px-1 ">{title}</div>
                     </NavLink>

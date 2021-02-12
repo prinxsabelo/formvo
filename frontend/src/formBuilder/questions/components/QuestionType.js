@@ -8,7 +8,7 @@ const QuestionType = (props) => {
 
     return (
         <>
-            <div className="w-full p-2 flex justify-between items-center bg-white">
+            <div className="w-full mt-2 flex justify-between items-center bg-white">
 
                 {
                     type === "CHOICE"

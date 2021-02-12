@@ -4,7 +4,7 @@ import Button from "../../shared/collection/Button"
 import Drawer from "../../shared/collection/Drawer";
 import QTypeIcon from "../../shared/collection/QTypeIcon";
 import { Payload } from "../../context/Payload";
-const BuildHeader = ({ type, children }) => {
+const BuildHeader = ({ properties, type, children }) => {
     // console.log(type);
     const { drawerIsOpen, setDrawerIsOpen, setTypeAction, questionTypes, currentType, setCurrentType } = useContext(Payload);
     const qType = questionTypes.find(qt => qt.type === type);
@@ -25,7 +25,7 @@ const BuildHeader = ({ type, children }) => {
                 <Button onClick={openDrawer}>
                     <span className="flex items-center">
                         <div className="px-1 mr-1 ">
-                            <QTypeIcon type={qType.type} />
+                            <QTypeIcon color="yellow" className="w-8 text-gray-100" type={qType.type} shape={properties.shape} />
                         </div>
                         {qType.label}
                     </span>

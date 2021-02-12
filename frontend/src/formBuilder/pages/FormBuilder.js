@@ -45,7 +45,7 @@ const FormBuilder = () => {
             }
 
             {width > breakpoint && (
-                <div className="hidden md:block">
+                <div className="hidden md:block builder-block"  >
                     <header className="flex w-full  h-16 pt-3  ">
                         <div className="w-1/3" >
                             <FormLabel />
@@ -57,10 +57,10 @@ const FormBuilder = () => {
                     </header>
                     <main className="flex w-full  mt-1 px-1 absolute top-16 bottom-0 ">
 
-                        <div className="w-1/3 " >
+                        <div className="w-1/3 border-r shadow-xl" >
                             {(form && form.questions) ? <QuestionList questions={form.questions} /> : 'xxx'}
                         </div>
-                        <div className="flex-auto bg-gray-100">
+                        <div className="flex-auto">
                             <TabContent />
                         </div>
                     </main>
@@ -72,7 +72,7 @@ const FormBuilder = () => {
                         <FormLabel />
                         <Tabs tabs={mobileTabs} />
                     </header>
-                    <main>
+                    <main >
                         <TabContent />
                     </main>
                     <footer>

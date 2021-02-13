@@ -10,7 +10,7 @@ const PayloadProvider = props => {
     const [drawerIsOpen, setDrawerIsOpen] = useState(false);
     const [question, setQuestion] = useState();
     const [questionTypes, setQuestionTypes] = useState([
-        { typeId: 1, label: "TEXT", type: "TEXT" },
+        { typeId: 1, label: "Text", type: "TEXT" },
         { typeId: 2, label: "Choice", type: "CHOICE", },
         { typeId: 4, label: "Rating", type: "RATING", },
         { typeId: 5, label: "Yes/No", type: "YN" }
@@ -41,8 +41,8 @@ const PayloadProvider = props => {
     }
 
     //ShowQuestion function works only on desktop..
-    const showQuestion = (q_id, type) => {
-        setQuestionDetail({ q_id });
+    const showQuestion = (q_id, type, index) => {
+        setQuestionDetail({ q_id, index });
         let questionType = questionTypes.find(q => q.type === type);
         setCurrentType(questionType.type);
         setTypeAction("edit");

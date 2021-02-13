@@ -7,7 +7,7 @@ const PayloadApi = {
                 "q_id": "J5sEzDuDfZ5d",
                 "title": "Someday or when?",
                 "type": "TEXT",
-                "response": "dkd",
+                "response": "",
                 "properties": {
                     "shape": "star",
                     "allow_multiple_selection": false,
@@ -19,7 +19,7 @@ const PayloadApi = {
                 "q_id": "J5sEzDuDfc3",
                 "title": "Tell me your thoughts",
                 "type": "TEXT",
-                "response": "Well i love you.",
+                "response": "",
                 "properties": {
                     "shape": "star",
                     "allow_multiple_selection": false,
@@ -31,7 +31,7 @@ const PayloadApi = {
                 "q_id": "J5sEzDuDd3",
                 "title": "Choose your thoughts?",
                 "type": "CHOICE",
-                "response": "You burnt my candle.",
+                "response": "",
                 "properties": {
                     "shape": "star",
                     "randomize": true,

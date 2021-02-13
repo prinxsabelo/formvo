@@ -1,4 +1,5 @@
 import Rating from "./Rating";
+import YN from "./YN";
 
 const NoChoice = (props) => {
 
@@ -7,9 +8,10 @@ const NoChoice = (props) => {
         <>
             {props.type === "RATING" &&
                 <Rating {...props} />
-
             }
-
+            {props.type === "YN" &&
+                <YN {...props} />
+            }
         </>
     )
 }

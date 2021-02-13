@@ -79,7 +79,7 @@ const MobileBuild = () => {
                                     </textarea>
                                     <input placeholder="Give a response for your question if you like.."
                                         value={question.response} onChange={changeHandler} name="response"
-                                        className="border-t-4 w-full p-1" />
+                                        className="border-2 border-t-4 w-full p-1" />
                                 </div>
                                 <QuestionType  {...question} />
                                 <Properties {...question} />

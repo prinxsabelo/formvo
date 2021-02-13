@@ -3,13 +3,13 @@ import { NavLink, useRouteMatch } from "react-router-dom";
 import { Payload } from "../../../context/Payload";
 
 import QTypeIcon from "../../../shared/collection/QTypeIcon";
-const QuestionItem = ({ q_id, title, type, properties }) => {
+const QuestionItem = ({ q_id, title, type, properties, index }) => {
     const { showQuestion, questionDetail } = useContext(Payload);
 
     const { url } = useRouteMatch();
     return (
         <>
-            <div onClick={() => showQuestion(q_id, type)}
+            <div onClick={() => showQuestion(q_id, type, index)}
                 className={`hidden md:flex q-item text-sm pr-2 rounded m-2 shadow  whitespace-no-wrap min-h-12 items-center
                 border-2 cursor-pointer justify-between break-words relative
                 ${questionDetail.q_id === q_id && 'bg-gray-100'}
@@ -21,7 +21,7 @@ const QuestionItem = ({ q_id, title, type, properties }) => {
                         <QTypeIcon color="white" className="w-8 text-gray-100" type={type} shape={properties.shape} />
                     </div>
                     <div className="ml-14">
-                        {title}
+                        <span className="font-semibold mr-1">{index}. </span>{title}
                     </div>
                 </div>
                 <div className=" q-actions opacity-0 bg-gray-200 w-18 flex absolute top-0 bottom-0 right-0  items-center space-x-4 px-2">

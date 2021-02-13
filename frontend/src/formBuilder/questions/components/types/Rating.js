@@ -3,7 +3,7 @@ import QTypeIcon from "../../../../shared/collection/QTypeIcon";
 const Rating = (props) => {
     const ratings = [{}, {}, {}, {}, {}];
     return (
-        <div className="w-full flex  p-5  items-center border">
+        <div className="w-full flex pl-2 p-5  items-center border">
             {props.properties.shape === "star" &&
                 <>
                     {ratings.map((star, index) =>

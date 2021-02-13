@@ -6,7 +6,7 @@ import QuestionType from "../questions/components/QuestionType";
 
 const DesktopBuild = () => {
     const { questionDetail, form, currentType, developQuestion } = useContext(Payload);
-    const { q_id } = questionDetail;
+    const { q_id, index } = questionDetail;
 
     const [question, setQuestion] = useState();
 
@@ -43,7 +43,7 @@ const DesktopBuild = () => {
                 {currentType && question ?
                     <>
                         <BuildHeader  {...question} >
-                            <Properties {...question} />
+                            <Properties {...question} index={index} />
                         </BuildHeader>
                         <form className="flex flex-col md:justify-end  p-1 bg-white md:w-3/4 border shadow">
                             <div>

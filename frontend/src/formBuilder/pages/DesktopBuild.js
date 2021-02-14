@@ -1,15 +1,29 @@
 import { useContext, useEffect, useState } from "react";
 import { Payload } from "../../context/Payload";
+import Button from "../../shared/collection/Button";
 import BuildHeader from "../components/BuildHeader";
 import Properties from "../questions/components/Properties";
 import QuestionType from "../questions/components/QuestionType";
 
 const DesktopBuild = () => {
-    const { questionDetail, form, currentType, developQuestion } = useContext(Payload);
+    const { questionDetail, form, currentType, developQuestion,
+        drawerIsOpen, setDrawerIsOpen, setTypeAction, setDrawerPosition } = useContext(Payload);
     const { q_id, index } = questionDetail;
 
     const [question, setQuestion] = useState();
-
+    const addQuestion = () => {
+        drawerIsOpen
+            ? closeDrawer()
+            : openDrawer();
+    }
+    const openDrawer = () => {
+        setTypeAction("new");
+        setDrawerPosition("right");
+        setDrawerIsOpen(true);
+    };
+    const closeDrawer = () => {
+        setDrawerIsOpen(false);
+    };
     const changeHandler = e => {
         const { q_id, properties, type, title, response } = question;
 
@@ -18,7 +32,6 @@ const DesktopBuild = () => {
         } else if (e.target.name === "response") {
             developQuestion({ response: e.target.value, title, q_id, type, properties });
         }
-
     }
     useEffect(() => {
         if (form && form.questions) {
@@ -45,15 +58,15 @@ const DesktopBuild = () => {
                         <BuildHeader  {...question} >
                             <Properties {...question} index={index} />
                         </BuildHeader>
-                        <form className="flex flex-col md:justify-end  p-1 bg-white md:w-3/4 border shadow">
+                        <form className="flex flex-col md:justify-end  p-1 bg-white w-3/4 border shadow">
                             <div>
-                                <textarea className="px-4 py-2 border w-full text-lg rounded-md question-textarea
+                                <textarea autoFocus={true} className="px-4 py-2 border w-full text-lg rounded-md question-textarea
                                     focus:outline-none focus:border-red-400 hover:shadow-md" name="title"
                                     onChange={changeHandler} placeholder="Type your Question Here.." value={question.title}
                                 ></textarea>
-                                <input placeholder="Give a response for your question if you like.."
+                                {/* <input placeholder="Give a response for your question if you like.."
                                     value={question.response} onChange={changeHandler} name="response"
-                                    className="border w-full px-4 py-1 rounded-md  focus:outline-none focus:border-red-400" />
+                                    className="border w-full px-4 py-1 rounded-md  focus:outline-none focus:border-red-400" /> */}
                             </div>
 
                             {(question && question.type) &&
@@ -64,6 +77,9 @@ const DesktopBuild = () => {
                             }
 
                         </form>
+                        <div className=" w-3/4 flex justify-end p-2 shadow">
+                            <Button className="bg-gray-800" onClick={addQuestion}>Add Question</Button>
+                        </div>
                     </>
                     :
                     <div>Pick Question</div>

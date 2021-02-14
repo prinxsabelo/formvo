@@ -23,12 +23,12 @@ const CustomHeader = () => {
                     <input type="search" name="q" className="py-2 text-sm text-black bg-gray-100 w-full rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
                         placeholder="Search..." autoComplete="off" />
                 </div>
-                <div className="space-x-1 tracking-wider text-sm md:text-normal md:mr-16">
+                {/* <div className="space-x-1 tracking-wider text-sm md:text-normal md:mr-16">
                     <span className="">Status:</span>
                     <button className=" p-1 text-black rounded "> Active </button>
 
                     <button className=" p-1 text-black font-black rounded"> Closed </button>
-                </div>
+                </div> */}
 
             </div>
 

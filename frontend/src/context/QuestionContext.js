@@ -56,8 +56,21 @@ const QuestionContextProvider = (props) => {
         setQuestions(q);
     }
     const addQuestion = type => {
-        alert(`add question for ${type}`);
+        const qn = {
+            title: "",
+            response: "",
+            type,
+            q_id: uuid(),
+            properties: {
+                "shape": "star",
+                "allow_multiple_selection": false,
+                "randomize": false,
+                "choices": []
+            }
+        }
 
+        setQuestions([...questions, qn])
+        alert(`add question for ${type}`);
     }
     return <QuestionContext.Provider value={{
 

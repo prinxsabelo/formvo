@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import PayloadApi from "./payload-api";
+import { v4 as uuid } from "uuid";
 
 export const Payload = createContext();
 const PayloadProvider = props => {
@@ -8,6 +9,7 @@ const PayloadProvider = props => {
     const [currentType, setCurrentType] = useState("");
     const [typeAction, setTypeAction] = useState("");
     const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+    const [drawerPosition, setDrawerPosition] = useState("left");
     const [question, setQuestion] = useState();
     const [questionTypes, setQuestionTypes] = useState([
         { typeId: 1, label: "Text", type: "TEXT" },
@@ -47,7 +49,26 @@ const PayloadProvider = props => {
         setCurrentType(questionType.type);
         setTypeAction("edit");
     }
+    const addQuestion = type => {
+        const qn = {
+            title: "",
+            response: "",
+            type,
+            q_id: uuid(),
+            properties: {
+                "shape": "star",
+                "allow_multiple_selection": false,
+                "randomize": false,
+                "choices": []
+            }
+        }
+        form.questions = [...form.questions, qn];
+        setForm(form);
+        let qIndex = form.questions.findIndex(({ q_id }) => q_id === qn.q_id);
+        let q_id = form.questions[qIndex].q_id;
+        showQuestion(q_id, type, qIndex += 1);
 
+    }
     return (
         <Payload.Provider value={{
             getForm, setForm,
@@ -57,7 +78,9 @@ const PayloadProvider = props => {
             questionTypes, setQuestionTypes,
             drawerIsOpen, setDrawerIsOpen,
             typeAction, setTypeAction,
-            question, setQuestion
+            question, setQuestion,
+            addQuestion,
+            drawerPosition, setDrawerPosition
         }}>
             {props.children}
         </Payload.Provider>

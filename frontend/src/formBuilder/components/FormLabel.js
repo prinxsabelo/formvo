@@ -9,7 +9,8 @@ import Drawer from "../../shared/collection/Drawer";
 
 const FormLabel = (props) => {
     let history = useHistory();
-    const { drawerIsOpen, setDrawerIsOpen, setTypeAction } = useContext(Payload);
+    const { drawerIsOpen, setDrawerIsOpen, setTypeAction,
+        drawerPosition, setDrawerPosition } = useContext(Payload);
     const changeHandler = e => {
         setTitle(e.target.value);
     }
@@ -25,6 +26,7 @@ const FormLabel = (props) => {
     const openDrawer = () => {
 
         setTypeAction("new");
+        setDrawerPosition("left")
         setDrawerIsOpen(true);
 
     };

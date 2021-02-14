@@ -6,13 +6,13 @@ import { CSSTransition } from 'react-transition-group';
 import { Payload } from '../../context/Payload';
 const Drawer = props => {
     const nodeRef = useRef(null);
-    const { currentType, setCurrentType, questionTypes, setDrawerIsOpen, typeAction } = useContext(Payload);
+    const { addQuestion, currentType, setCurrentType, questionTypes, setDrawerIsOpen, typeAction, drawerPosition } = useContext(Payload);
 
     const setQType = (type) => {
 
         setDrawerIsOpen(false);
         if (typeAction === "new") {
-            // addQuestion(type);
+            addQuestion(type);
         } else {
             if (type !== currentType) {
                 setCurrentType(type);
@@ -23,8 +23,9 @@ const Drawer = props => {
     let content = (
         <CSSTransition
             nodeRef={nodeRef} in={props.show} timeout={400} mountOnEnter unmountOnExit
-            classNames={typeAction === "new" ? `slide-in-left` : `slide-in-right`}>
-            <aside className={typeAction === "new" ? `drawer` : `edit-drawer`} onClick={props.onClick}>
+        // classNames={typeAction === "new" ? `slide-in-left` : `slide-in-right`}
+        >
+            <aside className={drawerPosition === "left" ? `left-drawer` : `right-drawer`} onClick={props.onClick}>
                 <div className="flex justify-center mt-2 border-b-2">
                     <h3 className="text-center px-6 py-3 text-lg">
                         {typeAction === "new" ? "Choose " : "Change "} Question Type

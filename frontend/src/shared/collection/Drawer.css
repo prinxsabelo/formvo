@@ -1,4 +1,4 @@
-.drawer {
+.left-drawer {
     position: fixed;
     left: 0;
     top: 0;
@@ -9,7 +9,7 @@
     background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
 }
-.edit-drawer {
+.right-drawer {
     position: fixed;
     right: 0;
     top: 25%;
@@ -21,7 +21,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
 }
 @media only screen and (max-width: 600px) {
-    .drawer {
+    .left-drawer {
         position: fixed;
         left: 0;
         top: 0;
@@ -32,7 +32,7 @@
         background: white;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.36);
     }
-    .edit-drawer {
+    .right-drawer {
         position: fixed;
         right: 0;
         top: 25%;

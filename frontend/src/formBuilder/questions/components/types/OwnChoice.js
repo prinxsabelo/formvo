@@ -56,7 +56,7 @@ const OwnChoice = (prop) => {
                 <div className="flex ">
                     {choices.length <= 4 &&
 
-                        <Button className="w-1/3 h-12 md:w-auto"
+                        <Button className="w-1/3 h-12 md:w-auto bg-gray-700"
                             onClick={addChoice}
                             style={{ transition: "all .30s ease" }}>
                             Add Choice

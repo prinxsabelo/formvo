@@ -4,13 +4,19 @@ import QTypeIcon from "../../../shared/collection/QTypeIcon";
 import ToggleSwitch from "../../../shared/collection/ToggleSwitch"
 
 const Properties = (props) => {
-    const [properties, setProperties] = useState({ randomize: "", allow_multiple_selection: "" });
+    const [properties, setProperties] = useState({
+        randomize: "",
+        allow_multiple_selection: "",
+        shape: "",
+        choices: [],
+        responses: []
+    });
     const { developQuestion } = useContext(Payload);
     useEffect(() => {
         setProperties(props.properties);
 
     })
-    let { title, response, q_id, type } = props;
+    let { title, q_id, type } = props;
     const onToggleChange = (index, isChecked) => {
         // console.log(arr[index]);
         let name = arr[index]['name'];
@@ -19,13 +25,15 @@ const Properties = (props) => {
 
         // console.table(properties);
 
-        developQuestion({ title, response, q_id, properties, type });
+        developQuestion({ title, q_id, properties, type });
     }
     const onShapeChange = (shape) => {
 
         properties.shape = shape;
-        developQuestion({ title, response, q_id, properties, type });
+        console.log(properties);
+        developQuestion({ title, q_id, properties, type });
     }
+    // const { randomize, allow_multiple_selection } = properties
     const { randomize, allow_multiple_selection } = properties
     const arr = [
         {
@@ -71,6 +79,7 @@ const Properties = (props) => {
                 {
                     props.type === "RATING" && properties && (
                         <div className="w-full py-2 flex md:flex-auto justify-center items-center space-x-4 mr-1 md:px-4">
+
                             <div className="md:text-xl w-1/3 flex justify-center">
                                 Choose Icon
                             </div>

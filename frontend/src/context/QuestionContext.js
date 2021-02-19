@@ -58,7 +58,7 @@ const QuestionContextProvider = (props) => {
     const addQuestion = type => {
         const qn = {
             title: "",
-            response: "",
+
             type,
             q_id: uuid(),
             properties: {

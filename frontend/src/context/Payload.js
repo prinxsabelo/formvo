@@ -30,10 +30,11 @@ const PayloadProvider = props => {
     }
     const developQuestion = qn => {
         //  console.log(qn.properties);
-
+        console.log(qn);
         if (qn.type === "RATING" && typeof qn.properties.shape === "undefined") {
             qn.properties = { shape: "star" }
         }
+        console.log(qn);
         const questions = form.questions.map(q => q.q_id === qn.q_id ? qn : q);
         setForm({ ...form, questions });
 
@@ -52,13 +53,14 @@ const PayloadProvider = props => {
     const addQuestion = type => {
         const qn = {
             title: "",
-            response: "",
+
             type,
             q_id: uuid(),
             properties: {
                 "shape": "star",
                 "allow_multiple_selection": false,
                 "randomize": false,
+                "responses": [],
                 "choices": []
             }
         }

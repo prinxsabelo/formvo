@@ -25,8 +25,8 @@ const MobileBuild = () => {
             }
             //  console.log(q.properties);
             if (q && (q.type !== currentType)) {
-                let { q_id, title, response, properties } = q;
-                developQuestion({ title, q_id, response, properties, type: currentType });
+                let { q_id, title, properties } = q;
+                developQuestion({ title, q_id, properties, type: currentType });
             }
             setQuestion(q);
             //  console.log(question);
@@ -35,13 +35,11 @@ const MobileBuild = () => {
 
     const changeHandler = e => {
         //  console.log(e);
-        const { q_id, properties, type, title, response } = question;
+        const { q_id, properties, type, title } = question;
         // console.log(q_id);
         // Check locally.. until save..
         if (e.target.name === "title") {
-            developQuestion({ title: e.target.value, response, q_id, type, properties });
-        } else if (e.target.name === "response") {
-            developQuestion({ response: e.target.value, title, q_id, type, properties });
+            developQuestion({ title: e.target.value, q_id, type, properties });
         }
 
 
@@ -60,7 +58,7 @@ const MobileBuild = () => {
                 {currentType && question ? (
                     <div>
                         <BuildHeader {...question}  >
-                            <Button onClick={() => saveQuestion(question)}>
+                            <Button className="bg-gray-800" onClick={() => saveQuestion(question)} >
                                 <svg className="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                 </svg>
@@ -77,9 +75,7 @@ const MobileBuild = () => {
                                         placeholder="Type your Question Here.." value={question.title} onChange={changeHandler}
                                     >
                                     </textarea>
-                                    {/* <input placeholder="Give a response for your question if you like.."
-                                        value={question.response} onChange={changeHandler} name="response"
-                                        className="border-2 border-t-4 w-full p-1 text-sm" /> */}
+
                                 </div>
                                 <QuestionType  {...question} />
                                 <Properties {...question} />

@@ -25,12 +25,10 @@ const DesktopBuild = () => {
         setDrawerIsOpen(false);
     };
     const changeHandler = e => {
-        const { q_id, properties, type, title, response } = question;
+        const { q_id, properties, type, title } = question;
 
         if (e.target.name === "title") {
-            developQuestion({ title: e.target.value, response, q_id, type, properties });
-        } else if (e.target.name === "response") {
-            developQuestion({ response: e.target.value, title, q_id, type, properties });
+            developQuestion({ title: e.target.value, q_id, type, properties });
         }
     }
     useEffect(() => {
@@ -38,9 +36,9 @@ const DesktopBuild = () => {
             let q = (form.questions.find(x => x.q_id === q_id));
             setQuestion(q);
             if (q && (q.type !== currentType)) {
-                let { q_id, title, response, properties } = q;
+                let { q_id, title, properties } = q;
 
-                developQuestion({ title, response, q_id, type: currentType, properties });
+                developQuestion({ title, q_id, type: currentType, properties });
             }
             // Send Form Data here.. for db update
             if (form) {
@@ -60,13 +58,11 @@ const DesktopBuild = () => {
                         </BuildHeader>
                         <form className="flex flex-col md:justify-end  p-1 bg-white w-3/4 border shadow">
                             <div>
-                                <textarea autoFocus={true} className="px-4 py-2 border w-full text-lg rounded-md question-textarea
+                                <textarea autoFocus={true} className="px-4 py-2 border w-full text-xl rounded-md question-textarea
                                     focus:outline-none focus:border-red-400 hover:shadow-md" name="title"
                                     onChange={changeHandler} placeholder="Type your Question Here.." value={question.title}
                                 ></textarea>
-                                {/* <input placeholder="Give a response for your question if you like.."
-                                    value={question.response} onChange={changeHandler} name="response"
-                                    className="border w-full px-4 py-1 rounded-md  focus:outline-none focus:border-red-400" /> */}
+
                             </div>
 
                             {(question && question.type) &&

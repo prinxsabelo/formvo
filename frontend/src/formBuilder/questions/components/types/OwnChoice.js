@@ -3,8 +3,8 @@ import { Payload } from "../../../../context/Payload";
 import Button from "../../../../shared/collection/Button";
 import Choice from "./Choice";
 
-const OwnChoice = (prop) => {
-    const { q_id, properties } = prop;
+const OwnChoice = (props) => {
+    const { q_id, properties } = props;
     const { developQuestion } = useContext(Payload);
 
     const [choices, setChoices] = useState([]);
@@ -22,9 +22,9 @@ const OwnChoice = (prop) => {
 
         choices[index].label = value;
         properties.choices = choices;
-        let { title, response, type } = prop;
+        let { title, type } = props;
 
-        developQuestion({ title, response, q_id, properties, type });
+        developQuestion({ title, q_id, properties, type });
     }
     const addChoice = () => {
         setChoices([...choices, { label: "", index: choices.length }])

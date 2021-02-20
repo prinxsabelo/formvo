@@ -9,29 +9,39 @@ import Properties from "../questions/components/Properties";
 
 const MobileBuild = () => {
 
-    const { form, setForm, getForm, currentType, setCurrentType, developQuestion } = useContext(Payload);
+    const { form, setForm, getForm, currentType, setTypeAction, typeAction, setCurrentType, developQuestion } = useContext(Payload);
     let { form_id, q_id } = useParams();
 
     const [question, setQuestion] = useState();
     useEffect(() => {
+
         if (!form) {
             getForm(form_id);
         }
         if (form && form.questions) {
             let q = (form.questions.find(x => x.q_id === q_id));
+            if (q) {
+                if (q.type && !currentType) {
+                    setCurrentType(q.type);
+                }
 
-            if (q.type && !currentType) {
-                setCurrentType(q.type);
+                if (typeAction === "edit") {
+                    if (q && (q.type !== currentType)) {
+                        let { q_id, title, properties } = q;
+                        setCurrentType(currentType);
+                        developQuestion({ title, q_id, properties, type: currentType });
+                    }
+                } else {
+                    setCurrentType(q.type);
+                }
+
+                setQuestion(q);
             }
-            //  console.log(q.properties);
-            if (q && (q.type !== currentType)) {
-                let { q_id, title, properties } = q;
-                developQuestion({ title, q_id, properties, type: currentType });
-            }
-            setQuestion(q);
-            //  console.log(question);
+
+
         }
-    }, [q_id, form_id, form, setForm, getForm, currentType, setCurrentType, developQuestion]);
+    }, [q_id, form_id, form, setForm, getForm, currentType, setCurrentType, developQuestion,
+        setTypeAction]);
 
     const changeHandler = e => {
         //  console.log(e);
@@ -70,7 +80,7 @@ const MobileBuild = () => {
                             <form className="flex flex-col space-y-2 w-full ">
                                 <div>
 
-                                    <textarea className="p-2 border w-full text-base rounded-md question-textarea
+                                    <textarea autoFocus={true} className="p-2 border w-full text-base rounded-md question-textarea
                                     focus:outline-none focus:shadow-md hover:shadow-md " name="title"
                                         placeholder="Type your Question Here.." value={question.title} onChange={changeHandler}
                                     >

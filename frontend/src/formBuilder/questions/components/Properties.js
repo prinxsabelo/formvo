@@ -30,7 +30,7 @@ const Properties = (props) => {
     const onShapeChange = (shape) => {
 
         properties.shape = shape;
-        console.log(properties);
+
         developQuestion({ title, q_id, properties, type });
     }
     // const { randomize, allow_multiple_selection } = properties

@@ -19,6 +19,9 @@ function App() {
           <ViewportProvider>
             <PayloadProvider>
               <Switch>
+                <Route path="/form/:form_id/questions/compose">
+                  <MobileBuild />
+                </Route>
                 <Route path="/form/:form_id/questions/:q_id">
                   <MobileBuild />
                 </Route>

@@ -62,19 +62,6 @@
     max-height: 75vh;  
     overflow-y: scroll;
   }
-  .q-list{
-    max-height: 88vh;  
-    overflow-y: auto;
-  }
-  @media only screen and (max-width: 600px) {
-    .q-list{
-      max-height: 70vh;  
-      overflow-y: auto;
-      background-color: red !important;
-      z-index: 1000;
-      padding-bottom: 3.5rem;
-    }
-  }
   
   .build{
     height: 85vh;
@@ -113,3 +100,51 @@
     transform: translateX(100%);
     background-color: #48bb78;
   }
+
+
+.q-list{
+  height: 71vh;  
+  overflow-y: auto;
+  padding-bottom: 3rem;
+}
+/* @media only screen and (max-width: 413px) {
+  .q-list{
+    height: 71vh;  
+  }
+} */
+
+ @media only screen and (max-width: 413px) and (height : 732px){
+  .q-list{
+    height: 74vh;  
+  }
+}
+
+@media only screen and (max-width: 414px) and (height : 736px){
+  .q-list{
+    height: 74.5vh;  
+  }
+}
+/* 
+@media only screen and (max-width: 375px) and (height : 667px){
+  .q-list{
+    height: 70vh;  
+  }
+} 
+*/
+@media only screen and (max-width: 375px) and (height : 812px){
+  .q-list{
+    height: 77vh;  
+  }
+} 
+
+@media only screen and (max-width: 320px) and (height : 533px){
+  .q-list{
+    height: 65vh;  
+  }
+} 
+
+@media only screen and (min-width: 768px) {
+  .q-list{
+    height: 89vh;  
+  }
+}

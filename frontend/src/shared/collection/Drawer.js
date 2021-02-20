@@ -16,6 +16,7 @@ const Drawer = props => {
         } else {
             if (type !== currentType) {
                 setCurrentType(type);
+
             }
 
         }

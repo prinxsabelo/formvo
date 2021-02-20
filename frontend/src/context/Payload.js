@@ -1,11 +1,19 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import PayloadApi from "./payload-api";
 import { v4 as uuid } from "uuid";
+import { ViewportContext } from "./ViewportContext";
+import { Redirect, useHistory } from "react-router-dom";
 
 export const Payload = createContext();
+
+
+const breakpoint = 768;
+
 const PayloadProvider = props => {
+    const history = useHistory();
+    const { width } = useContext(ViewportContext);
     const [form, setForm] = useState();
-    const [questionDetail, setQuestionDetail] = useState({ form_id: null, q_id: null });
+    const [questionDetail, setQuestionDetail] = useState({ q_id: null, index: 0 });
     const [currentType, setCurrentType] = useState("");
     const [typeAction, setTypeAction] = useState("");
     const [drawerIsOpen, setDrawerIsOpen] = useState(false);
@@ -19,6 +27,7 @@ const PayloadProvider = props => {
     ]);
 
     const getForm = (form_id) => {
+
         const fetchForm = async () => {
             try {
                 const data = await PayloadApi;
@@ -29,26 +38,27 @@ const PayloadProvider = props => {
         fetchForm();
     }
     const developQuestion = qn => {
-        //  console.log(qn.properties);
-        console.log(qn);
+
         if (qn.type === "RATING" && typeof qn.properties.shape === "undefined") {
             qn.properties = { shape: "star" }
         }
-        console.log(qn);
+
         const questions = form.questions.map(q => q.q_id === qn.q_id ? qn : q);
         setForm({ ...form, questions });
 
-
-        // //Send to db..
-        // console.log(form.form_id, qn);
     }
 
     //ShowQuestion function works only on desktop..
     const showQuestion = (q_id, type, index) => {
         setQuestionDetail({ q_id, index });
+
         let questionType = questionTypes.find(q => q.type === type);
         setCurrentType(questionType.type);
         setTypeAction("edit");
+        if (width <= breakpoint) {
+
+            history.push(`/form/${form.form_id}/questions/${q_id}`);
+        }
     }
     const addQuestion = type => {
         const qn = {

@@ -4,7 +4,7 @@ const PayloadApi = {
         "form_id": "1",
         "questions": [
             {
-                "q_id": "J5sEzDuDfZ5d",
+                "q_id": "J5sE2DuDfZ5d",
                 "title": "Someday or when?",
                 "type": "TEXT",
 
@@ -30,7 +30,7 @@ const PayloadApi = {
                 }
             },
             {
-                "q_id": "Jgth5sEzDuDfZ5d",
+                "q_id": "Jgth5s454fZ5d",
                 "title": "Someday or when?",
                 "type": "TEXT",
 
@@ -43,7 +43,7 @@ const PayloadApi = {
                 }
             },
             {
-                "q_id": "J5frsEzDuDfc3",
+                "q_id": "J5frsEzD3334uDfc3",
                 "title": "Tell me your thoughts",
                 "type": "TEXT",
 
@@ -56,7 +56,7 @@ const PayloadApi = {
                 }
             },
             {
-                "q_id": "efgJ5sEzdDuDd3",
+                "q_id": "efgJ5sEzdDuD565d3",
                 "title": "Choose your thoughts?",
                 "type": "CHOICE",
 
@@ -105,84 +105,7 @@ const PayloadApi = {
                     ]
                 }
             },
-            {
-                "q_id": "J5sEzDuDfZ5d",
-                "title": "Someday or when?",
-                "type": "TEXT",
 
-                "properties": {
-                    "shape": "star",
-                    "allow_multiple_selection": false,
-                    "randomize": false,
-                    "choices": [],
-                    "responses": []
-                }
-            },
-            {
-                "q_id": "Jgtgt5sEzDuDfc3",
-                "title": "Tell me your thoughts",
-                "type": "TEXT",
-
-                "properties": {
-                    "shape": "star",
-                    "allow_multiple_selection": false,
-                    "randomize": false,
-                    "choices": [],
-                    "responses": []
-                }
-            },
-            {
-                "q_id": "Jgth5sEzDuDfZ5d",
-                "title": "Someday or when?",
-                "type": "TEXT",
-
-                "properties": {
-                    "shape": "star",
-                    "allow_multiple_selection": false,
-                    "randomize": false,
-                    "choices": [],
-                    "responses": []
-                }
-            },
-            {
-                "q_id": "J5frsEzDuDfc3",
-                "title": "Tell me your thoughts",
-                "type": "TEXT",
-
-                "properties": {
-                    "shape": "star",
-                    "allow_multiple_selection": false,
-                    "randomize": false,
-                    "choices": [],
-                    "responses": []
-                }
-            },
-            {
-                "q_id": "efgJ5sEzdDuDd3",
-                "title": "Choose your thoughtsx?",
-                "type": "CHOICE",
-
-                "properties": {
-                    "shape": "star",
-                    "randomize": true,
-                    "allow_multiple_selection": true,
-                    "choices": [
-                        {
-                            "id": "1",
-                            "label": "Good"
-                        },
-                        {
-                            "id": "2",
-                            "label": "Bad"
-                        },
-                        {
-                            "id": "3",
-                            "label": "Fucked"
-                        }
-                    ],
-                    "responses": []
-                }
-            },
         ]
     }
 

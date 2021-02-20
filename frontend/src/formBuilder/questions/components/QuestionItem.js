@@ -4,7 +4,7 @@ import { Payload } from "../../../context/Payload";
 
 import QTypeIcon from "../../../shared/collection/QTypeIcon";
 const QuestionItem = ({ q_id, title, type, properties, index }) => {
-    const { showQuestion, questionDetail } = useContext(Payload);
+    const { showQuestion, questionDetail, setTypeAction } = useContext(Payload);
 
     const { url } = useRouteMatch();
     return (
@@ -40,7 +40,7 @@ const QuestionItem = ({ q_id, title, type, properties, index }) => {
 
             <div className="md:hidden">
                 <div className="flex items-center my-1 border-b-2 shadow space-x-1 w-full text-sm font-medium">
-                    <NavLink className="flex items-center w-11/12" to={`${url}/${q_id}`}>
+                    <NavLink onClick={() => setTypeAction('xxx')} className="flex items-center w-11/12" to={`${url}/${q_id}`}>
                         <div className="flex bg-gray-200 p-2 m-1 rounded-full h-12 w-12 ">
                             <QTypeIcon color="red" className="w-10" type={type} shape={properties.shape} />
                         </div>

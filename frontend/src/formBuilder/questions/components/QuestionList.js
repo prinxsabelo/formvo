@@ -29,7 +29,7 @@ const QuestionList = (props) => {
         <div className="relative">
             <div className="md:mx-1  md:py-2 q-list ">
                 {questions.map((q, index) => {
-                    return <QuestionItem {...q} key={index} index={index + 1} />
+                    return <QuestionItem qlength={questions.length} {...q} key={index} index={index += 1} />
                 })}
             </div>
             <div className="md:hidden absolute bottom-1 p-2 w-full flex justify-between items-center bg-white">

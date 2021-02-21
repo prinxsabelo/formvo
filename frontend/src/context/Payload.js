@@ -50,15 +50,20 @@ const PayloadProvider = props => {
 
     //ShowQuestion function works only on desktop..
     const showQuestion = (q_id, type, index) => {
-        setQuestionDetail({ q_id, index });
+        console.log(q_id, type, index)
+        setQuestionDetail({ q_id, type, index });
 
         let questionType = questionTypes.find(q => q.type === type);
-        setCurrentType(questionType.type);
+        if (questionType) {
+            console.log('xxx');
+            setCurrentType(questionType.type);
+        }
+        console.log(questionDetail)
         setTypeAction("edit");
         if (width <= breakpoint) {
-
             history.push(`/form/${form.form_id}/questions/${q_id}`);
         }
+
     }
     const addQuestion = type => {
         const qn = {
@@ -81,6 +86,19 @@ const PayloadProvider = props => {
         showQuestion(q_id, type, qIndex += 1);
 
     }
+    const deleteQuestion = question => {
+        let index = question.index - 1;
+        console.log(question, form.questions[question.index - 1]);
+        if (index != -1) {
+            console.log(form.questions[index]);
+            const { type, q_id } = form.questions[index];
+            showQuestion(q_id, type, index);
+            form.questions = form.questions.filter(x => x.q_id !== question.q_id);
+            setForm(form);
+        }
+
+        //
+    }
     return (
         <Payload.Provider value={{
             getForm, setForm,
@@ -91,7 +109,7 @@ const PayloadProvider = props => {
             drawerIsOpen, setDrawerIsOpen,
             typeAction, setTypeAction,
             question, setQuestion,
-            addQuestion,
+            addQuestion, deleteQuestion,
             drawerPosition, setDrawerPosition
         }}>
             {props.children}

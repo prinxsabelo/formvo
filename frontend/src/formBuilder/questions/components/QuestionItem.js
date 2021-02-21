@@ -3,20 +3,20 @@ import { NavLink, useRouteMatch } from "react-router-dom";
 import { Payload } from "../../../context/Payload";
 
 import QTypeIcon from "../../../shared/collection/QTypeIcon";
-const QuestionItem = ({ q_id, title, type, properties, index }) => {
-    const { showQuestion, questionDetail, setTypeAction } = useContext(Payload);
+const QuestionItem = ({ q_id, title, type, properties, index, qlength }) => {
+    const { showQuestion, questionDetail, setTypeAction, deleteQuestion } = useContext(Payload);
 
     const { url } = useRouteMatch();
     return (
         <>
-            <div onClick={() => showQuestion(q_id, type, index)}
+            <div
                 className={`hidden md:flex q-item text-sm pr-2 rounded m-2 shadow  whitespace-no-wrap min-h-12 items-center
                 border-2 cursor-pointer justify-between break-words relative
-                ${questionDetail.q_id === q_id && 'bg-gray-100'}
+                ${questionDetail.q_id === q_id && 'bg-gray-200'}
                 `}
             >
 
-                <div className="w-full py-1 flex items-center">
+                <div className="w-full py-1 flex items-center py-3" onClick={() => showQuestion(q_id, type, index)}>
                     <div className="px-2 bg-gray-800 flex absolute top-0 bottom-0 ">
                         <QTypeIcon color="white" className="w-8 text-gray-100" type={type} shape={properties.shape} />
                     </div>
@@ -30,11 +30,14 @@ const QuestionItem = ({ q_id, title, type, properties, index }) => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                         </svg>
                     </div>
-                    <div className="bg-gray-100 p-1 rounded-full">
+                    <div className="bg-gray-100 p-1 rounded-full" onClick={() => deleteQuestion({ q_id, index: index - 1 })}>
                         <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
                         </svg>
                     </div>
+
+
+
                 </div>
             </div>
 

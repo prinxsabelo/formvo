@@ -34,6 +34,7 @@ const DesktopBuild = () => {
     useEffect(() => {
         if (form && form.questions) {
             let q = (form.questions.find(x => x.q_id === q_id));
+
             setQuestion(q);
             if (q && (q.type !== currentType)) {
                 let { q_id, title, properties } = q;

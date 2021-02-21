@@ -7,6 +7,8 @@ import TabContent from "../components/tabs/TabContent";
 import QuestionList from "../questions/components/QuestionList";
 import NavBar from "../../shared/wrapper/NavBar";
 import { Payload } from "../../context/Payload";
+import Button from "../../shared/collection/Button";
+import Questions from "./Questions";
 const FormBuilder = () => {
     let { form_id } = useParams();
     const { getForm, form } = useContext(Payload);
@@ -58,7 +60,7 @@ const FormBuilder = () => {
                     <main className="flex w-full  mt-1 px-1 absolute top-16 bottom-0 ">
 
                         <div className="w-1/3 border-r shadow-xl" >
-                            {(form && form.questions) ? <QuestionList questions={form.questions} /> : 'xxx'}
+                            <Questions />
                         </div>
                         <div className="flex-auto">
                             <TabContent />

@@ -31,7 +31,7 @@ const PayloadProvider = props => {
         const fetchForm = async () => {
             try {
                 const data = await PayloadApi;
-                console.log(data.form);
+
                 setForm(data.form)
 
             } catch (err) { }
@@ -73,7 +73,7 @@ const PayloadProvider = props => {
             title: "",
 
             type,
-            q_id: `${id}`,
+            q_id: uuid(),
             properties: {
                 "shape": "star",
                 "allow_multiple_selection": false,
@@ -83,28 +83,18 @@ const PayloadProvider = props => {
             }
         }
         console.log(qn);
-        if (form.questions) {
-            form.questions = [...form.questions, qn];
-        } else {
-            console.log(form);
-            form.questions = [];
-            form.questions.push(qn);
-            console.log(qn);
-        }
 
-        setForm(form);
-        if (form.questions) {
-            let qIndex = form.questions.findIndex(({ q_id }) => q_id === qn.q_id);
-            let q_id = form.questions[qIndex].q_id;
-            showQuestion(q_id, type);
-        }
+        form.questions = [...form.questions, qn];
+
+        let qIndex = form.questions.findIndex(({ q_id }) => q_id === qn.q_id);
+        let q_id = form.questions[qIndex].q_id;
+        showQuestion(q_id, type);
+
 
 
     }
     const copyQuestion = question => {
         let index = form.questions.findIndex(q => q.q_id === question.q_id);
-        // console.log(index);
-        // console.log(form.questions[index]);
 
         const { title, type, properties } = form.questions[index];
         console.log(title, type, properties);
@@ -119,42 +109,18 @@ const PayloadProvider = props => {
         const questions = form.questions.concat(qn);
         setForm({ ...form, questions });
         showQuestion(qn.q_id, qn.type)
-        // form.questions.splice(index + 1, 0, qn);
-        // setForm(form => { });
-        // 
+
     }
     const deleteQuestion = question => {
-        //After deleting pick and set the higher question for access..
-        let index = form.questions.findIndex(q => q.q_id === question.q_id);
-        console.log(form);
-        console.log(form.questions[index]);
-        console.log(index);
-        if (index === 0) {
-            if (form.questions.length === 1) {
-                console.log('xxx');
-                form.questions.splice(index, 1);
-                setForm(form => console.log(form));
 
-            } else {
-                form.questions.splice(index, 1);
-                setForm(form);
-            }
-        }
-        // if (index === 0) {
-        //     form.questions = form.questions.filter(x => x.q_id !== question.q_id);
-        //     setForm(form => console.log('xx'));
-        // }
-        else {
-            console.log('normal 2');
-            // console.log(form);
+        let index = form.questions.findIndex(q => q.q_id === question.q_id);
+        if (index > 0) {
             const { type, q_id } = form.questions[index - 1];
             showQuestion(q_id, type);
-            form.questions = form.questions.filter(x => x.q_id !== question.q_id);
-            setForm(form);
         }
 
-        // console.log(form);
-        //
+        const questions = form.questions.filter(({ q_id }) => q_id !== question.q_id);
+        setForm({ ...form, questions });
     }
     return (
         <Payload.Provider value={{

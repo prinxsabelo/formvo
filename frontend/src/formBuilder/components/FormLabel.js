@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { FormContext } from "../../context/FormContext";
 import { Payload } from "../../context/Payload";
@@ -37,7 +37,14 @@ const FormLabel = (props) => {
     let { form_id } = useParams();
 
     const form = forms.find(f => f.form_id === form_id);
-    const [title, setTitle] = useState(form.title);
+    const [title, setTitle] = useState("");
+    useEffect(() => {
+        if (form) {
+            setTitle(form.title);
+        }
+    }, [form, title, setTitle])
+
+
     let buildCheck = false;
     if (window.location.pathname.search("build") !== -1) {
         buildCheck = true;

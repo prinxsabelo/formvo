@@ -8,6 +8,7 @@ import Modal from "./shared/collection/Modal";
 import ViewportProvider from "./context/ViewportContext";
 import MobileBuild from "./formBuilder/pages/MobileBuild";
 import PayloadProvider from './context/Payload';
+import Pop from "./shared/collection/Pop";
 
 function App() {
   return (

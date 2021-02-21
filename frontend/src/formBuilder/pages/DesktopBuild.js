@@ -8,9 +8,10 @@ import QuestionType from "../questions/components/QuestionType";
 const DesktopBuild = () => {
     const { questionDetail, form, currentType, developQuestion,
         drawerIsOpen, setDrawerIsOpen, setTypeAction, setDrawerPosition } = useContext(Payload);
-    const { q_id, index } = questionDetail;
+    const { q_id } = questionDetail;
 
     const [question, setQuestion] = useState();
+    const [index, setIndex] = useState(0);
     const addQuestion = () => {
         drawerIsOpen
             ? closeDrawer()
@@ -33,7 +34,9 @@ const DesktopBuild = () => {
     }
     useEffect(() => {
         if (form && form.questions) {
-            let q = (form.questions.find(x => x.q_id === q_id));
+            let qIndex = form.questions.findIndex(qn => qn.q_id === q_id);
+            setIndex(qIndex + 1);
+            let q = form.questions[qIndex];
 
             setQuestion(q);
             if (q && (q.type !== currentType)) {
@@ -54,7 +57,9 @@ const DesktopBuild = () => {
             <div className="hidden md:flex flex-col items-center build shadow-xl p-2 m-2 ">
                 {currentType && question ?
                     <>
+
                         <BuildHeader  {...question} >
+
                             <Properties {...question} index={index} />
                         </BuildHeader>
                         <form className="flex flex-col md:justify-end  p-1 bg-white w-3/4 border shadow">

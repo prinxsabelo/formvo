@@ -4,10 +4,8 @@ import Tabs from "../components/tabs/Tabs";
 import { ViewportContext } from "../../context/ViewportContext";
 import { useContext } from "react";
 import TabContent from "../components/tabs/TabContent";
-import QuestionList from "../questions/components/QuestionList";
 import NavBar from "../../shared/wrapper/NavBar";
 import { Payload } from "../../context/Payload";
-import Button from "../../shared/collection/Button";
 import Questions from "./Questions";
 const FormBuilder = () => {
     let { form_id } = useParams();
@@ -82,6 +80,7 @@ const FormBuilder = () => {
                     </footer>
                 </div>
             )}
+
         </>
     )
 }

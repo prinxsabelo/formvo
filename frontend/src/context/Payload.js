@@ -16,8 +16,11 @@ const PayloadProvider = props => {
     const [questionDetail, setQuestionDetail] = useState({ q_id: null, index: 0 });
     const [currentType, setCurrentType] = useState("");
     const [typeAction, setTypeAction] = useState("");
-    const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+
+    //Default Drawer position should be left..
     const [drawerPosition, setDrawerPosition] = useState("left");
+    const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+
     const [question, setQuestion] = useState();
     const [questionTypes, setQuestionTypes] = useState([
         { typeId: 1, label: "Text", type: "TEXT" },
@@ -63,10 +66,9 @@ const PayloadProvider = props => {
                 history.push(`/form/${form.form_id}/questions/${q_id}`);
             }
         }
-
-
-
     }
+
+
     const addQuestion = type => {
         const id = form.questions.length + 1;
         const qn = {
@@ -89,9 +91,6 @@ const PayloadProvider = props => {
         let qIndex = form.questions.findIndex(({ q_id }) => q_id === qn.q_id);
         let q_id = form.questions[qIndex].q_id;
         showQuestion(q_id, type);
-
-
-
     }
     const copyQuestion = question => {
         let index = form.questions.findIndex(q => q.q_id === question.q_id);
@@ -112,8 +111,11 @@ const PayloadProvider = props => {
 
     }
     const deleteQuestion = question => {
-
+        console.log(question.q_id)
         let index = form.questions.findIndex(q => q.q_id === question.q_id);
+
+        console.log(index);
+        console.log(form.questions, index);
         if (index > 0) {
             const { type, q_id } = form.questions[index - 1];
             showQuestion(q_id, type);

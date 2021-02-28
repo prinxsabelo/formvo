@@ -4,11 +4,11 @@ import FormContextProvider from "./context/FormContext";
 import FormBuilder from "./formBuilder/pages/FormBuilder";
 import Header from "./shared/header/Header";
 import Wrapper from "./shared/wrapper/Wrapper";
-import Modal from "./shared/collection/Modal";
 import ViewportProvider from "./context/ViewportContext";
 import MobileBuild from "./formBuilder/pages/MobileBuild";
 import PayloadProvider from './context/Payload';
 import Pop from "./shared/collection/Pop";
+import Dialog from "./shared/collection/Dialog";
 
 function App() {
   return (
@@ -35,7 +35,9 @@ function App() {
                   <div className=" bg-white text-black w-full text-white flex flex-col h-screen">
                     <Header />
                     <Wrapper />
-                    <Modal />
+                    <Dialog />
+
+                    {/* <Modal /> */}
 
                   </div>
                 </Route>

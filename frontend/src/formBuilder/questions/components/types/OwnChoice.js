@@ -53,10 +53,10 @@ const OwnChoice = (props) => {
                         choicesLength={choices.length} deleteChoice={deleteChoice} label={choice.label}
                         onChange={(event, index) => handleChoice(event, index)} {...choice} />
                 )}
-                <div className="flex ">
+                <div className="flex md:pb-1">
                     {choices.length <= 4 &&
 
-                        <Button className="w-1/3 h-12 md:w-auto bg-gray-700"
+                        <Button className="w-1/3 h-12 md:w-auto bg-gray-700 uppercase"
                             onClick={addChoice}
                             style={{ transition: "all .30s ease" }}>
                             Add Choice
@@ -64,18 +64,7 @@ const OwnChoice = (props) => {
                     }
                 </div>
             </div>
-            {/* <div className="hidden md:flex flex-auto justify-center">
-                {choices.length <= 4 &&
-                    <Button
-                        onClick={addChoice}
-                        style={{ transition: "all .30s ease" }}>
-                        <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
-                    </Button>
-                }
 
-            </div> */}
 
         </>
     )

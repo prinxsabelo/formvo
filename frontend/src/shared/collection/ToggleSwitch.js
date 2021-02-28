@@ -35,3 +35,4 @@ const ToggleSwitch = (props) => {
 }
 
 export default ToggleSwitch;
+{/* <div className="flex items-center space-x-1 p-2 relative"> */ }

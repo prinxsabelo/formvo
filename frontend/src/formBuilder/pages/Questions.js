@@ -28,16 +28,28 @@ const Questions = (props) => {
             <div className="flex p-1 md:hidden">
                 <input placeholder="Search Question" className="border h-8 border-red-500 w-full p-2 rounded-lg focus:rounded-lg" />
             </div>
-            {(form && form.questions.length > 0) ? <QuestionList questions={form.questions} /> :
-                <div className="flex flex-col w-full justify-center items-center">
-                    <div>
-                        Feel free to create questions..
-                    </div>
-                    <Button onClick={addQuestion} className="bg-gray-800 py-2 w-1/2">
-                        Create Question
-                    </Button>
-                </div>
+            {(form && form.questions.length > 0) ?
+                <>
+                    <QuestionList questions={form.questions} />
+                    <div className="md:hidden absolute bottom-1 p-2 w-full flex justify-between items-center bg-white">
+                        <div>Total Questions = {form.questions.length}</div>
+                        <Button onClick={addQuestion} className="bg-gray-900 py-3">
+                            Create Question
+                        </Button>
 
+                    </div>
+                </> :
+                <>
+                    {/* Starting afresh here.. */}
+                    <div className="flex flex-col w-full justify-center items-center">
+                        <div>
+                            Feel free to create questions..
+                    </div>
+                        <Button onClick={addQuestion} className="bg-gray-900 py-2 w-1/2">
+                            Create Question
+                    </Button>
+                    </div>
+                </>
             }
         </>}
 

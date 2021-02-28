@@ -80,7 +80,7 @@ const DesktopBuild = () => {
 
                         </form>
                         <div className=" w-3/4 flex justify-end p-2 shadow">
-                            <Button className="bg-gray-800" onClick={addQuestion}>Add Question</Button>
+                            <Button className="bg-gray-900" onClick={addQuestion}>Add Question</Button>
                         </div>
                     </>
                     :

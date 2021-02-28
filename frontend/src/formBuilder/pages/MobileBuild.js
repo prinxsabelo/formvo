@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Payload } from "../../context/Payload";
 import FormLabel from "../components/FormLabel";
 import BuildHeader from "../components/BuildHeader";
@@ -8,7 +8,7 @@ import QuestionType from "../questions/components/QuestionType";
 import Properties from "../questions/components/Properties";
 
 const MobileBuild = () => {
-
+    const history = useHistory();
     const { form, setForm, getForm, currentType, setTypeAction, typeAction, setCurrentType, developQuestion } = useContext(Payload);
     let { form_id, q_id } = useParams();
 
@@ -57,7 +57,8 @@ const MobileBuild = () => {
     const saveQuestion = (q) => {
         //  console.log(q);
         developQuestion(q);
-        // developQuestion({ title: e.target.value, q_id, type, properties });
+        history.push(`/form/${form.form_id}/questions`);
+
     }
     return (
         <>
@@ -68,7 +69,7 @@ const MobileBuild = () => {
                 {currentType && question ? (
                     <div>
                         <BuildHeader {...question}  >
-                            <Button className="bg-gray-800" onClick={() => saveQuestion(question)} >
+                            <Button className="bg-gray-900" onClick={() => saveQuestion(question)} >
                                 <svg className="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                 </svg>

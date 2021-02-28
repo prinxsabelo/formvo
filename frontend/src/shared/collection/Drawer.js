@@ -37,7 +37,7 @@ const Drawer = props => {
                         <div key={qt.typeId} onClick={() => setQType(qt.type)}
                             className={`cursor-pointer flex space-x-4 border-r-2 m-2
                             shadow border-b-2 border-l-2 items-center hover:bg-gray-200 hover:text-gray-800
-                            ${(qt.type === currentType && typeAction !== 'new') ? 'bg-gray-800  text-yellow-100' : ''}`}
+                            ${(qt.type === currentType && typeAction !== 'new') ? 'bg-gray-900  text-yellow-100' : ''}`}
                         >
                             <div className="p-2 ">
                                 <QTypeIcon color="red" className="w-8" type={qt.type} />

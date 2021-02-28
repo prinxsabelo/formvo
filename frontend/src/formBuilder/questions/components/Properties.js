@@ -37,10 +37,12 @@ const Properties = (props) => {
     const { randomize, allow_multiple_selection } = properties
     const arr = [
         {
+            id: 1,
             label: "Randomize",
             value: randomize,
             name: "randomize"
         }, {
+            id: 2,
             label: "Multiple Selection",
             value: allow_multiple_selection,
             name: "allow_multiple_selection"
@@ -64,16 +66,20 @@ const Properties = (props) => {
                     {props.index}
                 </div>
             </div>
-            <div className="flex-auto md:h-16 flex items-center text-lg md:text-xl mb-4 md:mb-0">
+            <div className="flex-auto md:h-16 flex  items-center text-lg md:text-xl mb-4 md:mb-0">
                 {
                     props.type === "CHOICE" && properties && (
-                        <div className="w-full flex md:text-xl text-sm justify-evenly">
-                            {arr.map((property, index) =>
-                                <ToggleSwitch key={index} index={index} id={`${q_id}-${property.name}`} label={property.label}
-                                    value={property.value} onToggleChange={onToggleChange} />
+                        <>
 
-                            )}
-                        </div>
+                            <div className="w-full flex md:text-lg text-sm justify-evenly">
+                                {/* <ToggleSwitch index={index} id={`${q_id}-${property.name}`} label={property.label}
+                                    value={property.value} onToggleChange={onToggleChange} /> */}
+                                {arr.map((property, index) =>
+                                    <ToggleSwitch key={property.id} index={index} id={`${q_id}-${property.name}`} label={property.label}
+                                        value={property.value} onToggleChange={onToggleChange} />
+                                )}
+                            </div>
+                        </>
                     )
                 }
                 {
@@ -107,12 +113,7 @@ const Properties = (props) => {
                         </div>
                     )
                 }
-                {
-                    props.type === "YN" && (
-                        <>
-                        </>
-                    )
-                }
+
             </div>
         </div>
     )

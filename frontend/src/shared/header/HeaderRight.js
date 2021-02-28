@@ -5,7 +5,7 @@ const HeaderRight = () => {
     const { addForm } = useContext(FormContext);
     return <div className="hidden md:flex space-x-4 justify-center items-center">
         <button
-            className="px-4 py-2 text-sm uppercase bg-black text-white rounded  mr-1 mb-1"
+            className="px-4 py-2 text-sm uppercase bg-gray-900 text-white rounded  mr-1 mb-1"
             onClick={() => addForm()}>Create Form</button>
         <button className="flex bg-white text-white p-1 " aria-haspopup="true" aria-expanded="true">
             <div className="bg-gray-200 rounded-full w-7 h-7 flex justify-center items-center">BS</div>

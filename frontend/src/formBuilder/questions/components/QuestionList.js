@@ -27,18 +27,12 @@ const QuestionList = (props) => {
 
     return (
         <div className="relative">
-            <div className="md:mx-1  md:py-2 q-list ">
+            <div className="md:mx-1  md:py-2 q-list pb-8">
                 {questions.map((q, index) => {
-                    return <QuestionItem qlength={questions.length} {...q} key={index} index={index += 1} />
+                    return <QuestionItem qlength={questions.length} {...q} key={q.q_id} index={index += 1} />
                 })}
             </div>
-            <div className="md:hidden absolute bottom-1 p-2 w-full flex justify-between items-center bg-white">
-                <div>Total Questions = {questions.length}</div>
-                <Button onClick={addQuestion} className="bg-gray-800 py-2">
-                    Create Question
-                </Button>
-                {/* <button onClick={addQuestion} className="bg-gray-800 text-white w-1/2 py-2 my-1">Create Question</button> */}
-            </div>
+
         </div>
     )
 }

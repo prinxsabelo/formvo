@@ -9,7 +9,7 @@ const CustomHeader = () => {
         <>
             <div className="md:hidden flex flex-row justify-between items-center px-2 py-1 md:p-8 border-b">
                 <h3 className="text-2xl">Forms</h3>
-                <button className="px-2 py-1 bg-black text-white text-base tracking-wider rounded"
+                <button className="px-2 py-1 bg-gray-900 text-white text-base tracking-wider rounded"
                     onClick={() => addForm()}>Create Form</button>
             </div>
             <div className="flex p-2 justify-between items-center w-full ">

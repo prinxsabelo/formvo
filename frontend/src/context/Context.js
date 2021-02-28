@@ -17,13 +17,21 @@ const ContextProvider = (props) => {
         ]
 
         const [headerContent, setHeaderContent] = useState(null);
-        const [showModal, setShowModal] = useState(false);
-        const [modalContent, setModalContent] = useState(null);
+        const [dialog, showDialog] = useState(false);
+        const [dialogContent, setDialogContent] = useState({
+                type: "",
+                header: "",
+                placeholder: ""
+        });
+        const closeDialog = () => {
+                showDialog(false);
+        }
         return <Context.Provider value={{
 
                 headerContent, setHeaderContent,
                 sideBarItems, navItems,
-                showModal, modalContent, setShowModal, setModalContent
+                dialog, showDialog, dialogContent, setDialogContent, closeDialog
+              
         }}>
                 {props.children}
         </Context.Provider>

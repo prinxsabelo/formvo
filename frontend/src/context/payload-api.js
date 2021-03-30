@@ -5,25 +5,29 @@ const PayloadApi = {
         "questions": [
             {
                 "q_id": "q1",
-                "title": "Someday or when?",
-                "type": "TEXT",
+                "title": "Someday for Good?",
+                "type": "YN",
 
                 "properties": {
                     "shape": "star",
                     "allow_multiple_selection": false,
+
+                    "required": false,
                     "randomize": false,
                     "choices": [],
-                    "responses": []
+                    "responses": [],
+
                 }
             },
             {
                 "q_id": "q2",
-                "title": "Tell me your thoughts",
-                "type": "TEXT",
+                "title": "Rate my thoughts",
+                "type": "RATING",
 
                 "properties": {
                     "shape": "star",
                     "allow_multiple_selection": false,
+                    "required": false,
                     "randomize": false,
                     "choices": [],
                     "responses": []
@@ -31,12 +35,12 @@ const PayloadApi = {
             },
             {
                 "q_id": "q3",
-                "title": "xxx in the making?",
-                "type": "TEXT",
-
+                "title": "Arrogant for us?",
+                "type": "RATING",
                 "properties": {
-                    "shape": "star",
+                    "shape": "thumb",
                     "allow_multiple_selection": false,
+                    "required": false,
                     "randomize": false,
                     "choices": [],
                     "responses": []
@@ -45,11 +49,12 @@ const PayloadApi = {
             {
                 "q_id": "q4",
                 "title": "Cleaning out my closet?",
-                "type": "TEXT",
+                "type": "RATING",
 
                 "properties": {
-                    "shape": "star",
+                    "shape": "heart",
                     "allow_multiple_selection": false,
+                    "required": false,
                     "randomize": false,
                     "choices": [],
                     "responses": []
@@ -63,6 +68,7 @@ const PayloadApi = {
                 "properties": {
                     "shape": "star",
                     "randomize": true,
+                    "required": false,
                     "allow_multiple_selection": true,
                     "choices": [
                         {
@@ -89,6 +95,7 @@ const PayloadApi = {
                 "properties": {
                     "shape": "star",
                     "allow_multiple_selection": false,
+                    "required": false,
                     "randomize": false,
                     "choices": [],
                     "responses": [

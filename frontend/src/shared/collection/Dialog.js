@@ -61,13 +61,11 @@ const Dialog = (props) => {
                 {dialogContent.type === "delete" &&
                     <div className="fixed bg-white text-gray-800
                                     top-1/2 left-5 right-5 p-4 z-50 rounded
-                                    md:top-1/4  md:left-1/2 md:w-1/4 flex flex-col space-y-1
+                                    md:top-1/4 md:left-1/3 mx-20 md:w-1/4 flex flex-col space-y-1
                     ">
-                        <h3 className="text-lg tracking-wide">Are you Sure to Delete Question? </h3>
-                        <div className="text-sm">
-                            {dialogContent.message}
-                        </div>
-                        <div className="flex w-full justify-end space-x-4 text-sm pt-1 ">
+                        <h3 className="text-lg tracking-wide flex w-full  justify-center">Are you Sure to Delete Question? </h3>
+
+                        <div className="flex w-full justify-end space-x-4 text-sm pt-1 justify-center ">
                             <Button className="bg-gray-100 p-1 rounded-lg text-gray-900" onClick={() => props.cancel()}>Cancel</Button>
                             <Button className="bg-red-700 p-1 rounded-lg" onClick={() => props.onDelete(q_id)}>Delete</Button>
 

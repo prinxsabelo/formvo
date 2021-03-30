@@ -9,7 +9,7 @@ import Share from "../../pages/Share";
 
 const TabContent = (props) => {
 
-    const { url } = useRouteMatch();
+    const { path, url } = useRouteMatch();
 
     return (
 
@@ -28,7 +28,7 @@ const TabContent = (props) => {
                 <Route path={`${url}/share`} exact>
                     <Share />
                 </Route>
-                <Route path={`${url}/results`} exact>
+                <Route path={`${url}/results/`} >
                     <Results />
                 </Route>
                 <Route path={`${url}/settings`} exact>

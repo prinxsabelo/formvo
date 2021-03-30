@@ -12,6 +12,11 @@ const Choice = (props) => {
         setLabel(event.target.value);
         props.onChange(event, index)
     }
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            props.addChoice()
+        }
+    }
     return (
         <>
 
@@ -19,6 +24,7 @@ const Choice = (props) => {
                 <input autoFocus={props.index === 0 || props.index + 1 == props.choicesLength} autoComplete="off" placeholder={`Choice ${props.index + 1}`}
                     className="border w-full p-3  outline-none rounded focus:border-black"
                     onChange={(event) => handleChoice(event, props.index)}
+                    onKeyDown={handleKeyDown}
                     index={props.index}
                     name={`choice${props.index}`}
                     value={label}
@@ -36,4 +42,4 @@ const Choice = (props) => {
         </>
     )
 }
-export default Choice; 
+export default Choice;

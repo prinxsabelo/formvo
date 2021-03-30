@@ -55,8 +55,9 @@
   }
   .builder-block{
     height: 99vh;
-    overflow-y: hidden;
+    overflow-y: auto;
     position: relative;
+
   }
   .form-list{
     max-height: 75vh;  
@@ -117,12 +118,17 @@
   .q-list{
     height: 74vh;  
   }
+  .result-main{
+    height: 70vh;
+    overflow-y: scroll;
+  }
 }
 
 @media only screen and (max-width: 414px) and (height : 736px){
   .q-list{
     height: 74.5vh;  
   }
+  
 }
 /* 
 @media only screen and (max-width: 375px) and (height : 667px){
@@ -131,10 +137,17 @@
   }
 } 
 */
+@media only screen and (max-width: 440px){
+  .main{
+    height: 70vh;
+    overflow-y: scroll;
+  }
+}
 @media only screen and (max-width: 375px) and (height : 812px){
   .q-list{
     height: 77vh;  
   }
+ 
 } 
 
 @media only screen and (max-width: 320px) and (height : 533px){
@@ -149,3 +162,6 @@
   }
 }
 
+.h-summary{
+  height: 80vh;
+}

@@ -91,29 +91,34 @@ const FormLabel = (props) => {
                                 )
                             }
                         </form>
-                        <div className="flex flex-auto justify-center">
-                            <div className="bg-gray-600 h-10 w-10 rounded text-white flex items-center justify-center">
-                                IM
-                            </div>
-                        </div>
-                        <div className="flex flex-auto justify-center">
+                        {buildCheck &&
+                            <>
+                                {/* <div className="flex flex-auto justify-center">
+                                    <div className="bg-gray-600 h-10 w-10 rounded text-white flex items-center justify-center">
+                                            IM
+                                </div>
+                                </div> */}
+                                <div className="flex flex-auto justify-center">
 
-                            <button className="px-4 py-2 text-white bg-gray-900 hover:shadow-lg rounded outline-none focus:outline-none" type="button"
-                                onClick={addQuestion}
-                                style={{ transition: "all .30s ease" }}>
-                                <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                </svg>
-                            </button>
-                            <Drawer show={drawerIsOpen} action="new" form_id={form_id} />
+                                    <button className="px-4 py-2 text-white bg-gray-900 hover:shadow-lg rounded outline-none focus:outline-none" type="button"
+                                        onClick={addQuestion}
+                                        style={{ transition: "all .30s ease" }}>
+                                        <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        </svg>
+                                    </button>
+                                    <Drawer show={drawerIsOpen} action="new" form_id={form_id} />
 
-                            {drawerIsOpen && <Backdrop onClick={closeDrawer} />}
+                                    {drawerIsOpen && <Backdrop onClick={closeDrawer} />}
 
-                        </div>
+                                </div>
+                            </>
+                        }
+
                     </div>
 
                     <div className="md:hidden">
-                        <div className="flex items-center border-b-4 border-gray-300 shadow">
+                        <div className="flex items-center border-b-4 border-gray-300 shadow ">
                             <div className="w-3/4  flex items-center py-1 ">
                                 <button onClick={() => goto()} className="w-12  flex items-center justify-center p-2">
                                     <svg className="w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

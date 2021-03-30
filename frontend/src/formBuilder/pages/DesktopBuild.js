@@ -1,17 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import { Payload } from "../../context/Payload";
 import Button from "../../shared/collection/Button";
+import ToggleSwitch from "../../shared/collection/ToggleSwitch";
 import BuildHeader from "../components/BuildHeader";
+import BuildRequired from "../components/BuildRequired";
 import Properties from "../questions/components/Properties";
 import QuestionType from "../questions/components/QuestionType";
 
 const DesktopBuild = () => {
-    const { questionDetail, form, currentType, developQuestion,
+    const { showQuestion, questionDetail, form, currentType, developQuestion,
         drawerIsOpen, setDrawerIsOpen, setTypeAction, setDrawerPosition } = useContext(Payload);
     const { q_id } = questionDetail;
 
     const [question, setQuestion] = useState();
     const [index, setIndex] = useState(0);
+    const arr = [{
+        id: 1,
+        label: "Required",
+        value: false,
+        name: "required"
+    }];
     const addQuestion = () => {
         drawerIsOpen
             ? closeDrawer()
@@ -31,7 +39,25 @@ const DesktopBuild = () => {
         if (e.target.name === "title") {
             developQuestion({ title: e.target.value, q_id, type, properties });
         }
+    };
+
+    const goto = (checker, q_id) => {
+        console.log(checker, q_id);
+        let index = form.questions.findIndex(quest => quest.q_id === q_id)
+        if (checker === 'backward') {
+            if (form.questions[index - 1]) {
+                const { q_id, type } = form.questions[index - 1];
+                showQuestion(q_id, type);
+            }
+        }
+        else if (checker === 'forward') {
+            if (form.questions[index + 1]) {
+                const { q_id, type } = form.questions[index + 1];
+                showQuestion(q_id, type);
+            }
+        }
     }
+
     useEffect(() => {
         if (form && form.questions) {
             let qIndex = form.questions.findIndex(qn => qn.q_id === q_id);
@@ -51,6 +77,12 @@ const DesktopBuild = () => {
 
         }
     }, [form, question, q_id, currentType, developQuestion]);
+    if (question && question.properties) {
+        const { properties } = question;
+        const { required } = properties
+        arr[0].value = required;
+
+    }
 
     return (
         <>
@@ -75,12 +107,35 @@ const DesktopBuild = () => {
                                 <>
                                     <QuestionType {...question} />
 
+
                                 </>
                             }
 
                         </form>
                         <div className=" w-3/4 flex justify-end p-2 shadow">
-                            <Button className="bg-gray-900" onClick={addQuestion}>Add Question</Button>
+                            <BuildRequired   {...question} />
+                            <Button onClick={() => goto('backward', question.q_id)} className=" text-gray-500 bg-white flex items-center justify-center">
+                                {index > 1 ?
+                                    <svg className="w-6 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                                    </svg>
+                                    :
+                                    <span>.</span>
+                                }
+                            </Button>
+                            <Button onClick={() => goto('forward', question.q_id)} className=" text-gray-500 bg-white flex items-center justify-center" >
+                                {index < form.questions.length ?
+
+                                    < svg className="w-6 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                                        <path fillRule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                                    </svg>
+
+                                    :
+                                    <span>.</span>
+                                }
+                            </Button>
+                            <Button className="bg-gray-900 uppercase" onClick={addQuestion}>Add Question</Button>
                         </div>
                     </>
                     :
@@ -90,6 +145,7 @@ const DesktopBuild = () => {
             </div>
         </>
     )
-
 }
+
+
 export default DesktopBuild;

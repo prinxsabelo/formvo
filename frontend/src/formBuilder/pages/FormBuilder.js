@@ -46,20 +46,22 @@ const FormBuilder = () => {
 
             {width > breakpoint && (
                 <div className="hidden md:block builder-block"  >
-                    <header className="flex w-full  h-16 pt-3  ">
+                    <header className="flex w-full py-1 justify-center shadow fixed bg-white z-50" >
                         <div className="w-1/3" >
                             <FormLabel />
                         </div>
-                        <div className="w-1/2 ">
+
+                        <div className="w-1/2 flex-grow">
                             <Tabs tabs={desktopTabs} />
                         </div>
-                        <div className="bg-gray-100 flex-auto">xxx</div>
+                        <div className=" w-64">xxx</div>
                     </header>
-                    <main className="flex w-full  mt-1 px-1 absolute top-16 bottom-0 ">
-
-                        <div className="w-1/3 border-r shadow-xl" >
-                            <Questions />
-                        </div>
+                    <main className="flex w-full absolute bottom-0 top-12">
+                        {window.location.pathname === `/form/${form_id}/build` &&
+                            <div className="w-1/3 border-r shadow-xl" >
+                                <Questions />
+                            </div>
+                        }
                         <div className="flex-auto">
                             <TabContent />
                         </div>
@@ -68,7 +70,7 @@ const FormBuilder = () => {
             )}
             {width <= breakpoint && (
                 <div className="md:hidden">
-                    <header>
+                    <header className="shadow">
                         <FormLabel />
                         <Tabs tabs={mobileTabs} />
                     </header>

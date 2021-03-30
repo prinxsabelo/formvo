@@ -33,7 +33,7 @@ const Questions = (props) => {
                     <QuestionList questions={form.questions} />
                     <div className="md:hidden absolute bottom-1 p-2 w-full flex justify-between items-center bg-white">
                         <div>Total Questions = {form.questions.length}</div>
-                        <Button onClick={addQuestion} className="bg-gray-900 py-3">
+                        <Button onClick={addQuestion} className="bg-gray-900 py-3 uppercase">
                             Create Question
                         </Button>
 
@@ -45,7 +45,7 @@ const Questions = (props) => {
                         <div>
                             Feel free to create questions..
                     </div>
-                        <Button onClick={addQuestion} className="bg-gray-900 py-2 w-1/2">
+                        <Button onClick={addQuestion} className="bg-gray-900 py-2 w-1/2 uppercase">
                             Create Question
                     </Button>
                     </div>

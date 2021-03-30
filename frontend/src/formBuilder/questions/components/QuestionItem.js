@@ -40,7 +40,7 @@ const QuestionItem = ({ q_id, title, type, properties, index, qlength }) => {
         showDialog(false);
     }
     const { url } = useRouteMatch();
-    const header = <div className="flex w-full items-center -mb-1 space-x-2 py-4 px-3 truncate text-lg bg-gray-100">
+    const header = <div className="flex w-full items-center -mb-1 space-x-2 py-4 px-3 truncate text-lg bg-white">
         <QTypeIcon color="rgba(31, 41, 55)" className="w-6" type={type} shape={properties.shape} />
         <div>{title}</div>
     </div>

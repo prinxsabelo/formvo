@@ -57,6 +57,8 @@
 .nav-tabs .nav-item a.active{
     /* background-color: yellow; */
     border-bottom: 3px solid rgb(14, 13, 13) !important;
+    font-weight:  500;
+
 }
   
 .nav-tabs .nav-item .nav-link:hover::before{

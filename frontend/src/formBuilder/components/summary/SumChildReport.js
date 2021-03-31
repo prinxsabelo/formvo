@@ -1,8 +1,9 @@
-import QTypeIcon from "../../shared/collection/QTypeIcon";
+import QTypeIcon from "../../../shared/collection/QTypeIcon";
 import SumChart from "./SumChart";
 
-const SubChildReport = (props) => {
+const SumChildReport = (props) => {
     const { title, type, summary, index } = props;
+    console.log(summary);
     return (
         <div className="shadow border  mt-4">
             <div className="flex items-center shadow w-full space-x-6 ">
@@ -18,7 +19,7 @@ const SubChildReport = (props) => {
             </div>
             <div>
                 <div className="flex mx-4 space-x-2">
-                    <div className="w-7/12  shadow">
+                    <div className="w-7/12  border-r">
                         <SumChart />
                     </div>
 
@@ -31,4 +32,4 @@ const SubChildReport = (props) => {
 
     )
 }
-export default SubChildReport
+export default SumChildReport

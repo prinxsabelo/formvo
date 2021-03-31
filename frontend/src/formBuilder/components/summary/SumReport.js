@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router";
-import { Payload } from "../../context/Payload";
-import SumChildReport from "../components/SumChildReport"
+import { Payload } from "../../../context/Payload";
 
-const SummaryReport = (props) => {
+import SumChildReport from "./SumChildReport";
+
+const SumReport = (props) => {
     let { form_id } = useParams();
     const { getReport, report } = useContext(Payload);
     useEffect(() => {
@@ -29,4 +30,4 @@ const SummaryReport = (props) => {
         </div>
     )
 }
-export default SummaryReport
+export default SumReport

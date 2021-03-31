@@ -1,6 +1,7 @@
-import SumChildDetail from "../components/SumChildDetail"
+import SumChildDetail from "./SumChildDetail";
 
-const SummaryDetail = (props) => {
+
+const SumDetail = (props) => {
     const detail = {
         views: 20,
         started: 10,
@@ -16,4 +17,4 @@ const SummaryDetail = (props) => {
         </div>
     )
 }
-export default SummaryDetail
+export default SumDetail

@@ -22,7 +22,7 @@ const SumChart = (props) => {
 
     }
     const options = {
-
+        tooltips: { enabled: false },
         layout: {
             padding: {
                 left: 40,

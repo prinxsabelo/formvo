@@ -10,14 +10,14 @@ const SumReport = (props) => {
     useEffect(() => {
         getReport(form_id);
     }, [getReport, form_id])
-    console.log(report);
+
     return (
-        <div className="px-8 py-4">
-            <div>
-                <h3 className="text-2xl">Response Summary</h3>
+        <div className="md:px-8 md:py-4 p-2">
+            <div className="md:p-0 pt-2">
+                <h3 className="md:text-2xl text-2xl">Response Summary</h3>
             </div>
             {report.length > 0 &&
-                <div>
+                <div className="flex flex-col space-y-6 mb-4">
                     {report.map((rep, index) =>
 
                         <SumChildReport index={index + 1} key={index}

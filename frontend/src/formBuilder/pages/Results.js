@@ -14,13 +14,15 @@ const Results = (props) => {
             <header className="w-full bg-white shadow md:flex md:justify-center pb-1 shadow md:fixed top-14 left-0 right-0">
                 <ResultTabs result_tabs={result_tabs} />
             </header>
+            
             <main className="md:mt-12 main pb-4">
-                <Route path={`${url}/summary`} exact>
-                    <Summary />
-                </Route>
                 <Route path={`${url}/responses`} exact>
                     <Responses />
                 </Route>
+                <Route path={`${url}/summary`} exact>
+                    <Summary />
+                </Route>
+
             </main>
         </>
     )

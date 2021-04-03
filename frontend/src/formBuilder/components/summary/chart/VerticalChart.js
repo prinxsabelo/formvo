@@ -1,33 +1,37 @@
-import { HorizontalBar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 
-const SumChart = (props) => {
-
+const VerticalChart = (props) => {
+    const { content } = props;
+    const labels = [];
+    const percentages = [];
+    for (let count in content) {
+        const { label, percentage } = content[count];
+        percentages.push(percentage);
+        labels.push(`${label} Rating`);
+    }
+    // alert(Math.max(...percentages));
     const data = {
-        labels: ['Simple', 'Easy',],
-
+        labels: labels,
         datasets: [
-
             {
-                label: "Percentage ",
-                data: [100, 30],
-
+                label: 'Rainfall',
                 backgroundColor: 'rgb(116, 202, 254)',
-                categoryPercentage: 1.0,
-                barPercentage: 0.9,
+                borderColor: 'rgba(0,0,0,1)',
+
+                data: percentages,
 
             },
 
-        ],
-
+        ]
     }
     const options = {
         tooltips: { enabled: false },
         layout: {
             padding: {
-                left: 40,
+                left: 5,
                 right: 10,
-                top: 0,
+                top: 40,
                 bottom: 0
             }
         },
@@ -38,81 +42,75 @@ const SumChart = (props) => {
                 },
                 display: true,
                 color: 'black',
-                align: 'start',
-                anchor: 'start',
+                align: 'top',
+                anchor: 'end',
                 clamp: true,
-                position: 'right',
+                position: 'top',
                 font: {
                     size: "14",
-                }
-
+                },
+                // padding: '-2'
             }
         },
         legend: {
             display: false,
-
             responsive: true,
             maintainAspectRatio: false,
 
         },
         scales: {
-
             xAxes: [
                 {
-                    display: false,
+                    display: true,
                     ticks: {
+
+                        mirror: true,
                         beginAtZero: true,
                         min: 0,
                         max: 100,
                         stepSize: 20,
-
+                        fontStyle: 'bold'
                     },
                     scaleLabel: {
                         display: false
                     },
-                    gridLines: {
-                        display: false,
-                    },
+
 
                 },
 
             ],
-            yAxes: [{
-
-                stacked: true,
-                ticks: {
-                    mirror: true,
-                    padding: -5,
-                    fontColor: 'black',
-
-                    z: 1000,
-                    fontSize: 14
-                },
-                gridLines: {
+            yAxes: [
+                {
                     display: false,
-                    offsetGridLines: false,
-                },
-            }]
-        },
-    }
+                    ticks: {
 
+                        mirror: true,
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+
+                    },
+                },
+            ]
+        }
+    }
     return (
         <>
-            <div style={{ position: 'relative', width: '100%' }} className="hidden md:flex">
-                < HorizontalBar
-                    width={50} height={12}
+            <div className="bg-gray-100 hidden md:flex">
+
+                <Bar height={110}
                     data={data}
                     options={options}
                 />
             </div >
-            <div style={{ position: 'relative', width: '90%' }} className="md:hidden -2">
-                < HorizontalBar
-                    height={100}
+            <div className="bg-gray-100 md:hidden " style={{ position: 'relative', width: '100%' }} >
+
+                <Bar
                     data={data}
                     options={options}
                 />
             </div >
         </>
-    );
+    )
 }
-export default SumChart
+export default VerticalChart;

@@ -13,7 +13,7 @@ const ReportApi = {
             "title": "Rate my thoughts",
             "type": "RATING",
             "content": [
-                { "label": "1", "percentage": 20, "value": 1 },
+                { "label": "1", "percentage": 100, "value": 1 },
                 { "label": "2", "percentage": 0, "value": 0 },
                 { "label": "3", "percentage": 40, "value": 2 },
                 { "label": "4", "percentage": 20, "value": 1 },
@@ -56,12 +56,12 @@ const ReportApi = {
                 },
                 {
                     "label": "Bad",
-                    "precentage": 20,
+                    "percentage": 20,
                     "value": 1
                 },
                 {
                     "label": "Fucked",
-                    "precentage": 20,
+                    "percentage": 20,
                     "value": 1
                 }
 
@@ -72,8 +72,8 @@ const ReportApi = {
             "title": "Good for us?",
             "type": "YN",
             "content": [
-                { "label": "Yes", "percentage": 50 },
-                { "label": "No", "percentage": 50 }
+                { "label": "Yes", "value": 50, "percentage": 50 },
+                { "label": "No", "value": 50, "percentage": 50 }
             ],
             "summary": { "count": 4, "total": 5 },
         },

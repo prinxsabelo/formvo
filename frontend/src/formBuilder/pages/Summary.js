@@ -1,3 +1,5 @@
+import HorizontalChart from "../components/summary/chart/HorizontalChart"
+import VerticalChart from "../components/summary/chart/VerticalChart"
 import SumDetail from "../components/summary/SumDetail"
 import SumReport from "../components/summary/SumReport"
 
@@ -12,9 +14,11 @@ const Summary = (props) => {
                 <div className="overflow-y-auto flex-auto">
                     <SumReport />
                 </div>
-
             </div>
-            {/* <SumChart /> */}
+            <div className="md:hidden flex flex-col">
+                <SumDetail />
+                <SumReport />
+            </div>
         </>
     )
 }

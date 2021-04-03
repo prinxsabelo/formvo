@@ -4,7 +4,7 @@ import { FormContext } from "../../context/FormContext";
 import { Payload } from "../../context/Payload";
 import Backdrop from "../../shared/collection/Backdrop";
 // import Button from "../../shared/collection/Button";
-import Drawer from "../../shared/collection/Drawer";
+import QDrawer from "../../shared/collection/QDrawer";
 
 
 const FormLabel = (props) => {
@@ -107,7 +107,7 @@ const FormLabel = (props) => {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                         </svg>
                                     </button>
-                                    <Drawer show={drawerIsOpen} action="new" form_id={form_id} />
+                                    <QDrawer show={drawerIsOpen} action="new" form_id={form_id} />
 
                                     {drawerIsOpen && <Backdrop onClick={closeDrawer} />}
 

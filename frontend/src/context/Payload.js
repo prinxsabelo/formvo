@@ -19,7 +19,7 @@ const PayloadProvider = props => {
     const [currentType, setCurrentType] = useState("");
     const [typeAction, setTypeAction] = useState("");
 
-    //Default Drawer position should be left..
+    //Default QDrawer position should be left..
     const [drawerPosition, setDrawerPosition] = useState("left");
     const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 

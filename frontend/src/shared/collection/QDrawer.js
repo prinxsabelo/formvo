@@ -1,10 +1,10 @@
-import './Drawer.css';
+import './QDrawer.css';
 import ReactDOM from 'react-dom';
 import { useContext, useRef } from 'react';
 import QTypeIcon from './QTypeIcon';
 import { CSSTransition } from 'react-transition-group';
 import { Payload } from '../../context/Payload';
-const Drawer = props => {
+const QDrawer = props => {
     const nodeRef = useRef(null);
     const { addQuestion, currentType, setCurrentType, questionTypes, setDrawerIsOpen, typeAction, drawerPosition } = useContext(Payload);
 
@@ -53,4 +53,4 @@ const Drawer = props => {
         </CSSTransition>)
     return ReactDOM.createPortal(content, document.getElementById('drawer-hook'));
 }
-export default Drawer
+export default QDrawer

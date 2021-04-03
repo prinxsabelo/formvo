@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Button from "../../shared/collection/Button"
 
-import Drawer from "../../shared/collection/Drawer";
+import QDrawer from "../../shared/collection/QDrawer";
 import QTypeIcon from "../../shared/collection/QTypeIcon";
 import { Payload } from "../../context/Payload";
 import { useHistory } from "react-router-dom";
@@ -106,7 +106,7 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
             </div>
 
 
-            <Drawer show={drawerIsOpen} />
+            <QDrawer show={drawerIsOpen} />
         </div>
     )
 }

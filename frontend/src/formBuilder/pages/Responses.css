@@ -1,0 +1,25 @@
+.main-container{
+  
+    width: 98vw;
+}
+.cont{
+    height: 75vh;
+}
+table{
+    overflow-x: scroll;
+}
+
+table tr > th,td {
+    min-width: 20rem;
+    max-width: 20rem;
+    
+}
+table tr > th:nth-child(1), td:nth-child(1){
+    min-width: 5rem;
+    max-width: 5rem;
+}
+table tr > th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3){
+    min-width: 15rem;
+    max-width: 15rem;
+}
+  

@@ -14,7 +14,6 @@ const PayloadProvider = props => {
     const history = useHistory();
     const { width } = useContext(ViewportContext);
     const [form, setForm] = useState();
-    const [report, setReport] = useState([]);
     const [questionDetail, setQuestionDetail] = useState({ q_id: null, index: 0 });
     const [currentType, setCurrentType] = useState("");
     const [typeAction, setTypeAction] = useState("");
@@ -129,21 +128,6 @@ const PayloadProvider = props => {
     }
 
 
-    const getReport = (form_id) => {
-        const fetchReport = async () => {
-            try {
-                const data = await ReportApi;
-
-                setReport(data.boxes)
-
-            } catch (err) { }
-        };
-        fetchReport();
-    }
-
-
-
-
 
 
     return (
@@ -159,7 +143,6 @@ const PayloadProvider = props => {
             addQuestion, deleteQuestion, copyQuestion,
             drawerPosition, setDrawerPosition,
 
-            getReport, report
         }}>
             {props.children}
         </Payload.Provider>

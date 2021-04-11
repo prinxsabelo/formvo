@@ -23,7 +23,7 @@ const QDrawer = props => {
     }
     let content = (
         <CSSTransition
-            nodeRef={nodeRef} in={props.show} timeout={400} mountOnEnter unmountOnExit
+            nodeRef={nodeRef} in={props.show} timeout={600} mountOnEnter unmountOnExit
         // classNames={typeAction === "new" ? `slide-in-left` : `slide-in-right`}
         >
             <aside className={drawerPosition === "left" ? `left-drawer` : `right-drawer`} onClick={props.onClick}>

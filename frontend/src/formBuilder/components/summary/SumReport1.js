@@ -1,8 +1,15 @@
+import { useContext, useEffect } from "react";
+import { useParams } from "react-router";
+import { Payload } from "../../../context/Payload";
 
 import SumChildReport from "./SumChildReport";
 
 const SumReport = (props) => {
-    const { report } = props;
+    let { form_id } = useParams();
+    const { getReport, report } = useContext(Payload);
+    useEffect(() => {
+        getReport(form_id);
+    }, [getReport, form_id])
 
     return (
         <div className="md:px-8 md:py-4 p-2">

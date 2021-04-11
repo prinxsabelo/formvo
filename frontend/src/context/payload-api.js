@@ -113,6 +113,117 @@ const PayloadApi = {
                 }
             },
 
+
+
+            {
+                "q_id": "q7",
+                "title": "Can you drive me crazy?",
+                "type": "YN",
+
+                "properties": {
+                    "shape": "star",
+                    "allow_multiple_selection": false,
+
+                    "required": false,
+                    "randomize": false,
+                    "choices": [],
+                    "responses": [],
+
+                }
+            },
+            {
+                "q_id": "q8",
+                "title": "Rate my Jealousy",
+                "type": "RATING",
+
+                "properties": {
+                    "shape": "star",
+                    "allow_multiple_selection": false,
+                    "required": false,
+                    "randomize": false,
+                    "choices": [],
+                    "responses": []
+                }
+            },
+            {
+                "q_id": "q9",
+                "title": "Your love for me id?",
+                "type": "RATING",
+                "properties": {
+                    "shape": "thumb",
+                    "allow_multiple_selection": false,
+                    "required": false,
+                    "randomize": false,
+                    "choices": [],
+                    "responses": []
+                }
+            },
+            {
+                "q_id": "q10",
+                "title": "My flow for you is",
+                "type": "RATING",
+
+                "properties": {
+                    "shape": "heart",
+                    "allow_multiple_selection": false,
+                    "required": false,
+                    "randomize": false,
+                    "choices": [],
+                    "responses": []
+                }
+            },
+            {
+                "q_id": "q11",
+                "title": "My language is?",
+                "type": "CHOICE",
+
+                "properties": {
+                    "shape": "star",
+                    "randomize": true,
+                    "required": false,
+                    "allow_multiple_selection": true,
+                    "choices": [
+                        {
+                            "id": "1",
+                            "label": "Silly"
+                        },
+                        {
+                            "id": "2",
+                            "label": "Fluent"
+                        },
+                        {
+                            "id": "3",
+                            "label": "In control"
+                        }
+                    ],
+                    "responses": []
+                }
+            },
+            {
+                "q_id": "q12",
+                "title": "Do you love me?",
+                "type": "YN",
+
+                "properties": {
+                    "shape": "star",
+                    "allow_multiple_selection": false,
+                    "required": false,
+                    "randomize": false,
+                    "choices": [],
+                    "responses": [
+                        {
+                            "response_id": "xxx",
+                            "occupy": "YES",
+                            "label": "Hell Yes"
+                        },
+                        {
+                            "response_id": "xxx",
+                            "occupy": "NO",
+                            "label": "Hell No"
+                        }
+                    ]
+                }
+            },
         ]
     }
 

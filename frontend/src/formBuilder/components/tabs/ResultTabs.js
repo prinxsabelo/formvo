@@ -8,7 +8,7 @@ const ResultTabs = (props) => {
     return (
         <div>
 
-            <ul className="nav nav-tabs -space-x-24 md:space-x-2">
+            <ul className="nav nav-tabs space-x-24 md:space-x-2">
                 {result_tabs.map(result_tab =>
                     <ResultTab result_tab={result_tab} key={result_tab.id} />
                 )}

@@ -28,7 +28,7 @@ const TabContent = (props) => {
                 <Route path={`${url}/share`} exact>
                     <Share />
                 </Route>
-                <Route path={`${url}/results/`} >
+                <Route path={`${url}/results/`}  >
                     <Results />
                 </Route>
                 <Route path={`${url}/settings`} exact>

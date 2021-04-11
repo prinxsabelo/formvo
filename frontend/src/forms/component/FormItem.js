@@ -34,7 +34,7 @@ const FormItem = ({ form, index }) => {
         },
         {
             id: 2,
-            action: "results/summary",
+            action: "results",
             name: " Results",
         },
         {

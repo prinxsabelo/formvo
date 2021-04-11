@@ -23,13 +23,13 @@ const FormBuilder = () => {
     const mobileTabs = [
         { id: 1, label: "Questions", link: `questions` },
         { id: 2, label: "Share", link: `share` },
-        { id: 3, label: "Results", link: `results/summary` },
+        { id: 3, label: "Results", link: `results` },
         { id: 4, label: "Settings", link: `settings` }];
 
     const desktopTabs = [
         { id: 1, label: "Build", link: `build` },
         { id: 2, label: "Share", link: `share` },
-        { id: 3, label: "Results", link: `results/summary` },
+        { id: 3, label: "Results", link: `results` },
         { id: 4, label: "Settings", link: `settings` }
     ]
 

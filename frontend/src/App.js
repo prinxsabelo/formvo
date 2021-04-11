@@ -9,6 +9,7 @@ import MobileBuild from "./formBuilder/pages/MobileBuild";
 import PayloadProvider from './context/Payload';
 import Pop from "./shared/collection/Pop";
 import Dialog from "./shared/collection/Dialog";
+import ResultContextProvider from "./context/ResultContext";
 
 function App() {
   return (
@@ -19,29 +20,32 @@ function App() {
 
           <ViewportProvider>
             <PayloadProvider>
-              <Switch>
-                <Route path="/form/:form_id/questions/compose">
-                  <MobileBuild />
-                </Route>
-                <Route path="/form/:form_id/questions/:q_id">
-                  <MobileBuild />
-                </Route>
-                <Route path="/form/:form_id">
-                  <FormBuilder />
-                </Route>
+              <ResultContextProvider>
+                <Switch>
+                  <Route path="/form/:form_id/questions/compose">
+                    <MobileBuild />
+                  </Route>
+                  <Route path="/form/:form_id/questions/:q_id">
+                    <MobileBuild />
+                  </Route>
+                  <Route path="/form/:form_id">
+                    <FormBuilder />
+                  </Route>
 
 
-                <Route path={["/", "/home", "/forms", "/trash"]} exact>
-                  <div className=" bg-white text-black w-full text-white flex flex-col h-screen">
-                    <Header />
-                    <Wrapper />
-                    <Dialog />
+                  <Route path={["/", "/home", "/forms", "/trash"]} exact>
+                    <div className=" bg-white text-black w-full text-white flex flex-col h-screen">
+                      <Header />
+                      <Wrapper />
+                      <Dialog />
 
-                    {/* <Modal /> */}
+                      {/* <Modal /> */}
 
-                  </div>
-                </Route>
-              </Switch>
+                    </div>
+                  </Route>
+                </Switch>
+              </ResultContextProvider>
+
             </PayloadProvider>
 
           </ViewportProvider>

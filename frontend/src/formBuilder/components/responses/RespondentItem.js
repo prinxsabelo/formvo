@@ -1,6 +1,6 @@
 import { NavLink, useRouteMatch } from "react-router-dom";
 
-const ResponseItem = ({ index, token }) =>{
+const RespondentItem = ({ index, token }) =>{
     const { url } = useRouteMatch();
     return (
         <NavLink to={url+"/"+token} className="shadow-sm p-4 flex flex-col space-y-2 border-b-4">
@@ -13,4 +13,4 @@ const ResponseItem = ({ index, token }) =>{
         </NavLink>
     )
 }
-export default ResponseItem;
+export default RespondentItem;

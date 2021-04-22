@@ -71,13 +71,8 @@ const Properties = (props) => {
                     props.type === "CHOICE" && properties && (
                         <>
 
-                            <div className="w-full flex md:text-lg text-sm justify-evenly">
-                                {/* <ToggleSwitch index={index} id={`${q_id}-${property.name}`} label={property.label}
-                                    value={property.value} onToggleChange={onToggleChange} /> */}
-                                {/* {arr.map((property, index) =>
-                                    <ToggleSwitch key={property.id} index={index} id={`${q_id}-${property.name}`} label={property.label}
-                                        value={property.value} onToggleChange={onToggleChange} />
-                                )} */}
+                            <div className="w-full mt-8 md:mt-0 flex md:text-lg text-sm justify-evenly">
+                             
                                 {arr.map((property, index) =>
                                       <ToggleSwitch key={property.id} index={index} id={`${q_id}-${property.name}`} label={property.label}
                                       value={property.value} onToggleChange={onToggleChange} />

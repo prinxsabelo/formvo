@@ -7,7 +7,7 @@ import QTypeIcon from "../../shared/collection/QTypeIcon";
 import { ViewportContext } from "../../context/ViewportContext"
 
 import './Responses.css';
-import ResponsesList from "../components/responses/ResponsesList";
+import ResponsesList from "../components/responses/RespondentsList";
 const Responses = (props) => {
     const breakpoint = 768;
     const { width } = useContext(ViewportContext);

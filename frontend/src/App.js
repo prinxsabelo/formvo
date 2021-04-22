@@ -10,7 +10,7 @@ import PayloadProvider from './context/Payload';
 import Pop from "./shared/collection/Pop";
 import Dialog from "./shared/collection/Dialog";
 import ResultContextProvider from "./context/ResultContext";
-import ResponseDetail from "./formBuilder/pages/ResponseDetail";
+import RespondentDetail from "./formBuilder/pages/RespondentDetail";
 import ConfirmModal from "./shared/collection/ConfirmModal";
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
                     <MobileBuild />
                   </Route>
                   <Route path="/form/:form_id/results/responses/:token">
-                    <ResponseDetail />
+                    <RespondentDetail />
                   </Route>
                   <Route path="/form/:form_id">
                     <FormBuilder />

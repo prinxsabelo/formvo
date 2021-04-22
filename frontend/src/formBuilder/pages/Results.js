@@ -1,6 +1,6 @@
 import { Redirect, Route, Switch, useRouteMatch } from "react-router"
 import ResultTabs from "../components/tabs/ResultTabs";
-import ResponseDetail from "./ResponseDetail";
+import RespondentDetail from "./RespondentDetail";
 import Responses from "./Responses";
 import Summary from "./Summary";
 
@@ -25,12 +25,11 @@ const Results = (props) => {
                 <Route path={`${url}/summary`} >
                     <Summary />
                 </Route>
+                
                 <Route path={`${url}/responses`}>
                     <Responses />
                 </Route>
-                <Route path={`${url}/responses/:token`}>
-                    <ResponseDetail />
-                </Route>
+              
 
             </main>
     

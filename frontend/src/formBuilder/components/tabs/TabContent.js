@@ -6,7 +6,7 @@ import Questions from "../../pages/Questions";
 import Results from "../../pages/Results";
 import Settings from "../../pages/Settings";
 import Share from "../../pages/Share";
-
+import RespondentDetail from '../../pages/RespondentDetail'
 
 const TabContent = (props) => {
 
@@ -35,6 +35,7 @@ const TabContent = (props) => {
                 <Route path={`${url}/settings`} exact>
                     <Settings />
                 </Route>
+               
             </div>
         </div>
         <ConfirmModal />

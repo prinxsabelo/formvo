@@ -3,27 +3,31 @@ import { ResultContext } from "../../context/ResultContext";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import QTypeIcon from "../../shared/collection/QTypeIcon";
+import NavBar from "../../shared/wrapper/NavBar";
 
-const ResponseDetail = () =>{
+const RespondentDetail = () =>{
     let { form_id, token } = useParams();
     // console.log(token);
-    const { getResponses, responses } = useContext(ResultContext);
+    const [ respondent, setRespondent ] = useState([]);
+    const { getFormResponses, formResponses } = useContext(ResultContext);
+    const [index, setIndex ] = useState(0);
     useEffect(() => {
-        getResponses(form_id);
-    }, [getResponses, form_id])
-    let response;
-    let index;
-    if(responses.responses){
-        response = responses.responses.find(resp => resp.token === token);
-        index = responses.responses.findIndex(resp => resp.token === token)+1;
-     
-    }
-    // console.log(response);
-    // console.log(responses.responses);
+        getFormResponses(form_id);
+        if(formResponses){
+            if(formResponses.respondents){
+                let respondents =  formResponses.respondents;
+                if(respondents){
+                    setRespondent(respondents.find(r => r.token === token));
+                     setIndex(respondents.findIndex(resp => resp.token === token)+1);
+                }
+            }
+        }
+    }, [getFormResponses, form_id])
+  
 
     return (
         <>
-            {response ?
+            {respondent ?
                     <>
                          <header>
                             <FormLabel />
@@ -37,9 +41,9 @@ const ResponseDetail = () =>{
                             </div>
                         </header>
                         <main className="ra-list">
-                            {response.answers && response.answers.length > 0 ?
+                            {respondent.answers && respondent.answers.length > 0 ?
                                 <>
-                                    {response.answers.map((answer,index) =>
+                                    {respondent.answers.map((answer,index) =>
                                         <div key={index} className="p-4 pt-6 border-b-2 shadow-md">
                                             <div className="flex space-x-4">
                                                 <span >{index+1}. </span> 
@@ -80,6 +84,9 @@ const ResponseDetail = () =>{
                         
                         
                         </main> 
+                        <footer>
+                            <NavBar />
+                        </footer>
                     </>
                     :
                     <div>RESPODENT NOT FOUND..</div>
@@ -119,4 +126,4 @@ const ResponseDetail = () =>{
         </>
     );
 }
-export default ResponseDetail;
+export default RespondentDetail;

@@ -7,8 +7,9 @@ import QTypeIcon from "../../shared/collection/QTypeIcon";
 import { ViewportContext } from "../../context/ViewportContext"
 
 import './Responses.css';
-import ResponsesList from "../components/responses/ResponsesList";
+import ResponsesList from "../components/responses/RespondentsList";
 import Pop from "../../shared/collection/Pop";
+import RespondentsList from "../components/responses/RespondentsList";
 const Responses = (props) =>{
     let { form_id } = useParams();
     const breakpoint = 768;
@@ -199,9 +200,14 @@ const Responses = (props) =>{
                         </div>
                     </div>
                 :
-                <div>
-                    Mobile
-                </div>
+                <>
+                    {respondents && respondents.length > 0 ?
+                             <RespondentsList respondents={respondents} />
+                             :
+                             <div>No Respondent Found..</div>
+                    }
+                </>
+           
         
         }
         {drawerIsOpen && <Backdrop onClick={closeDrawer} />}

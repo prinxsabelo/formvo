@@ -74,9 +74,13 @@ const Properties = (props) => {
                             <div className="w-full flex md:text-lg text-sm justify-evenly">
                                 {/* <ToggleSwitch index={index} id={`${q_id}-${property.name}`} label={property.label}
                                     value={property.value} onToggleChange={onToggleChange} /> */}
-                                {arr.map((property, index) =>
+                                {/* {arr.map((property, index) =>
                                     <ToggleSwitch key={property.id} index={index} id={`${q_id}-${property.name}`} label={property.label}
                                         value={property.value} onToggleChange={onToggleChange} />
+                                )} */}
+                                {arr.map((property, index) =>
+                                      <ToggleSwitch key={property.id} index={index} id={`${q_id}-${property.name}`} label={property.label}
+                                      value={property.value} onToggleChange={onToggleChange} />
                                 )}
                             </div>
                         </>

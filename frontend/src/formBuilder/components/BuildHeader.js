@@ -65,7 +65,7 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
                         </svg>
                         :
-                        <span>.</span>
+                        <span className="w-6">.</span>
                     }
                 </Button>
                 <Button className="text-gray-800 w-10 bg-white flex items-center justify-center">
@@ -77,7 +77,7 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
                             <path fillRule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd" />
                         </svg>
                         :
-                        <span>.</span>
+                        <span className="w-6">.</span>
                     }
                 </Button>
                 <div className="py-3 px-1 bg-white">

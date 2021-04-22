@@ -35,8 +35,11 @@ const PayloadProvider = props => {
         const fetchForm = async () => {
             try {
                 const data = await PayloadApi;
-
-                setForm(data.form)
+                console.log(data);
+                if(data.form){
+                    setForm(data.form)
+                }
+   
 
             } catch (err) { }
         };

@@ -1,5 +1,6 @@
 import { Redirect, Route, Switch, useRouteMatch } from "react-router"
 import ResultTabs from "../components/tabs/ResultTabs";
+import ResponseDetail from "./ResponseDetail";
 import Responses from "./Responses";
 import Summary from "./Summary";
 
@@ -12,11 +13,11 @@ const Results = (props) => {
 
     return (
         <>
-            <header className="w-full bg-white shadow md:flex md:justify-center pb-1 shadow md:fixed top-14 left-0 right-0">
+            <header className="w-full bg-white shadow md:flex md:justify-center pb-1 shadow md:fixed top-14 left-0 right-0 border-t-2 mt-1">
                 <ResultTabs result_tabs={result_tabs} />
             </header>
 
-            <main className="md:mt-12 main pb-4">
+            <main className="mt-8 main pb-4">
                 <Route path={`${url}`} exact>
                     <Redirect to={`${url}/summary`} />
 
@@ -27,9 +28,12 @@ const Results = (props) => {
                 <Route path={`${url}/responses`}>
                     <Responses />
                 </Route>
-
+                <Route path={`${url}/responses/:token`}>
+                    <ResponseDetail />
+                </Route>
 
             </main>
+    
         </>
     )
 }

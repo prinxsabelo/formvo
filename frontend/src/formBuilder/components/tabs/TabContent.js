@@ -1,5 +1,6 @@
 
 import { Route, useRouteMatch } from "react-router-dom";
+import ConfirmModal from "../../../shared/collection/ConfirmModal";
 import DesktopBuild from "../../pages/DesktopBuild";
 import Questions from "../../pages/Questions";
 import Results from "../../pages/Results";
@@ -12,7 +13,7 @@ const TabContent = (props) => {
     const { path, url } = useRouteMatch();
 
     return (
-
+        <>
         <div className="tab-content">
             <div className="tab-pane active">
 
@@ -36,7 +37,8 @@ const TabContent = (props) => {
                 </Route>
             </div>
         </div>
-
+        <ConfirmModal />
+        </>
     )
 }
 export default TabContent;

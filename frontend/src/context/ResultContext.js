@@ -11,7 +11,7 @@ const breakpoint = 768;
 
 const ResultContextProvider = props => {
     const [report, setReport] = useState([]);
-    const [responses, setReponses] = useState([]);
+    const [formResponses, setFormReponses] = useState([]);
 
     const getReport = (form_id) => {
         const fetchReport = async () => {
@@ -25,20 +25,20 @@ const ResultContextProvider = props => {
         fetchReport();
     }
 
-    const getResponses = (form_id) => {
-        const fetchResponses = async () => {
+    const getFormResponses = (form_id) => {
+        const fetchFormResponses = async () => {
             try {
                 const data = await ResponseApi;
-                setReponses(data.form);
+                setFormReponses(data.form);
             } catch (err) { }
         };
-        fetchResponses();
+        fetchFormResponses();
     }
 
     return (
         <ResultContext.Provider value={{
             getReport, report,
-            getResponses, responses
+            getFormResponses, formResponses
         }}>
             {props.children}
         </ResultContext.Provider>

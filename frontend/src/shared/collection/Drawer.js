@@ -7,8 +7,8 @@ import QTypeIcon from './QTypeIcon';
 
 const Drawer = props => {
     const nodeRef = useRef(null);
-    const { responseDetail, type } = props;
-    console.log(responseDetail);
+    const { detail, type } = props;
+  
     let content = (
         <CSSTransition
             nodeRef={nodeRef} in={props.show} timeout={600} mountOnEnter unmountOnExit
@@ -19,10 +19,10 @@ const Drawer = props => {
                     <h5 className="text-base pt-3">20-12-2011</h5>
                 </div>
                 <div className="p-4 overflow-y-scroll content-h">
-                    {responseDetail.answers &&
+                    {detail.answers &&
                         <div className="flex flex-col">
-                            {responseDetail.answers.map((answer, index) =>
-                                <div className="flex text-md py-2 px-4 m-2 shadow-md">
+                            {detail.answers.map((answer, index) =>
+                                <div className="flex text-md py-2 px-4 m-2 shadow-md" key={index}>
                                     <div className="w-1/12">{index + 1}</div>
 
                                     <div>

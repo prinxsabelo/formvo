@@ -5,8 +5,8 @@ import { v4 as uuid } from "uuid";
 export const FormContext = createContext();
 const FormContextProvider = (props) => {
 
-    // const { setShowModal, setModalContent } = useContext(Context);
-    const { dialog, showDialog, setDialogContent } = useContext(Context);
+    // const { setShowDialog, setDialogContent } = useContext(Context);
+    const { Dialog, showDialog, setDialogContent } = useContext(Context);
 
     const [title, setTitle] = useState("");
     const submitForm = (form) => {

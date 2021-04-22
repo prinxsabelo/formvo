@@ -7,13 +7,15 @@ import TabContent from "../components/tabs/TabContent";
 import NavBar from "../../shared/wrapper/NavBar";
 import { Payload } from "../../context/Payload";
 import Questions from "./Questions";
+import { Context } from "../../context/Context";
 const FormBuilder = () => {
     let { form_id } = useParams();
-    const { getForm, form } = useContext(Payload);
+    const { getForm, form} = useContext(Payload);
+    const { isOpen } = useContext(Context);  
     if (!form) {
         getForm(form_id);
     }
-
+  
 
 
     const { width } = useContext(ViewportContext);
@@ -45,8 +47,9 @@ const FormBuilder = () => {
             }
 
             {width > breakpoint && (
-                <div className="hidden md:block builder-block"  >
-                    <header className="flex w-full py-1 justify-center shadow fixed bg-white z-50" >
+                <div className="hidden md:block builder-block hidden overflow-none h-24"   >
+
+                    <header className={`flex w-full py-1 justify-center shadow bg-white z-50 `} >
                         <div className="w-1/3" >
                             <FormLabel />
                         </div>
@@ -54,11 +57,11 @@ const FormBuilder = () => {
                         <div className="w-1/2 flex-grow">
                             <Tabs tabs={desktopTabs} />
                         </div>
-                        <div className=" w-64">xxx</div>
+                        <div className=" w-64">xxx </div>
                     </header>
-                    <main className="flex w-full absolute bottom-0 top-12">
+                    <main className="flex w-full relative bottom-0 top-0">
                         {window.location.pathname === `/form/${form_id}/build` &&
-                            <div className="w-1/3 border-r shadow-xl" >
+                            <div className="w-1/3 border-r shadow-xl " >
                                 <Questions />
                             </div>
                         }

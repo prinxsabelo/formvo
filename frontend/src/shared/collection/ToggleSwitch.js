@@ -1,40 +1,46 @@
 
 import { useEffect, useState } from 'react';
-import './ToggleSwitch.scss';
+import { Switch } from "@headlessui/react";
+
 
 const ToggleSwitch = (props) => {
-    const [isChecked, setIsChecked] = useState(false);
-    // console.log(props.value);
+    const [enabled, setEnabled] = useState(false);
     useEffect(() => {
 
         if (props.value) {
-            setIsChecked(props.value);
+            setEnabled(props.value)
         } else {
-            setIsChecked(false);
+            setEnabled(false);
         }
 
-    }, [setIsChecked, props.value]);
+    }, [setEnabled, props.value]);
+    const handleChange = (e) => {
+        
+        setEnabled(!enabled);
 
-
-    const handleChange = (e, index) => {
-
-        setIsChecked(!isChecked);
-        const { checked } = e.target;
-
-
-        props.onToggleChange(index, checked);
+        props.onToggleChange(index, e);
     }
-    const { id, index, label, className } = props;
-
-    return (
-        <div className="flex items-center space-x-1 relative">
-            <label htmlFor={id} className={`cursor-pointer ${className}`}>{label}</label>
-            <input id={id} type="checkbox" className="switch" checked={isChecked}
-                onChange={(event) => handleChange(event, index)}
-            />
-        </div>
-    )
+    const { id, index, label} = props;
+    return   (
+              <Switch.Group>
+                <div className="flex items-center">
+                  <Switch.Label className="mr-1 text-sm md:text-xl">{label}</Switch.Label>
+                  <Switch
+                    checked={enabled}
+                    onChange={(event) => handleChange(event)}
+                    className={`${
+                      enabled ? "bg-red-900" : "bg-gray-200"
+                    } relative inline-flex items-center h-5 rounded-full w-9 transition-colors focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-indigo-500`}
+                  >
+                    <span
+                      className={`${
+                        enabled ? "translate-x-4" : "translate-x-1"
+                      } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
+                    />
+                  </Switch>
+                </div>
+              </Switch.Group>
+    );
 }
 
 export default ToggleSwitch;
-{/* <div className="flex items-center space-x-1 p-2 relative"> */ }

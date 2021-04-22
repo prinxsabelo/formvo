@@ -6,19 +6,19 @@ import Backdrop from './Backdrop';
 import Button from './Button';
 
 const Dialog = (props) => {
-    const { dialog, showDialog, closeDialog, dialogContent, } = useContext(Context);
+    const { Dialog, showDialog, closeDialog, DialogContent, } = useContext(Context);
     const { submitForm } = useContext(FormContext);
-    const { header, placeholder } = dialogContent;
+    const { header, placeholder } = DialogContent;
     const [title, setTitle] = useState("");
     const [form, setForm] = useState({
         form_id: "",
         title: ""
     })
     useEffect(() => {
-        if (dialogContent.type === "form") {
-            setForm(dialogContent.form);
+        if (DialogContent.type === "form") {
+            setForm(DialogContent.form);
         }
-    }, [setForm, dialogContent])
+    }, [setForm, DialogContent])
 
     const changeHandler = e => {
         const { value } = e.target;
@@ -26,12 +26,12 @@ const Dialog = (props) => {
         setForm({ form_id, title: value })
 
     }
-    const { q_id } = dialogContent;
+    const { q_id } = DialogContent;
     return <>
-        {dialog &&
+        {Dialog &&
             <>
                 <Backdrop onClick={closeDialog} />
-                {dialogContent.type === "form" &&
+                {DialogContent.type === "form" &&
                     <>
                         <form className="fixed bg-white text-gray-800
                                 top-28 left-2 right-2 p-4 z-50 rounded
@@ -58,7 +58,7 @@ const Dialog = (props) => {
                     </>
 
                 }
-                {dialogContent.type === "delete" &&
+                {DialogContent.type === "delete" &&
                     <div className="fixed bg-white text-gray-800
                                     top-1/2 left-5 right-5 p-4 z-50 rounded
                                     md:top-1/4 md:left-1/3 mx-20 md:w-1/4 flex flex-col space-y-1

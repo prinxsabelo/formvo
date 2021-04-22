@@ -1,7 +1,6 @@
 
 import { useContext } from 'react';
 import { Payload } from '../../../context/Payload';
-import Button from '../../../shared/collection/Button';
 import QuestionItem from './QuestionItem';
 
 const QuestionList = (props) => {

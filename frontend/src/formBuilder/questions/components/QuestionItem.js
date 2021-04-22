@@ -9,7 +9,7 @@ import Pop from "../../../shared/collection/Pop";
 import QTypeIcon from "../../../shared/collection/QTypeIcon";
 const QuestionItem = ({ q_id, title, type, properties, index, qlength }) => {
     const { showQuestion, questionDetail, setTypeAction, deleteQuestion, copyQuestion } = useContext(Payload);
-    const { dialog, showDialog, setDialogContent } = useContext(Context);
+    const { Dialog, showDialog, setDialogContent } = useContext(Context);
     const [pop, setPop] = useState(false);
     const [delCheck, setDelCheck] = useState(false);
 
@@ -100,10 +100,10 @@ const QuestionItem = ({ q_id, title, type, properties, index, qlength }) => {
 
             <Pop header={header} show={pop} message="question" copy={() => copy()} del={() => checkDelete({ q_id })} />
             {pop && <Backdrop onClick={() => setPop(false)} />}
+          
 
-
-            <Dialog show={dialog} onDelete={onDelete} cancel={cancel} />
-            {dialog && <Backdrop onClick={() => showDialog(false)} />}
+            {/* <Dialog show={Dialog} onDelete={onDelete} cancel={cancel} /> */}
+            {/* {Dialog && <Backdrop onClick={() => showDialog(false)} />} */}
         </>
     )
 }

@@ -19,6 +19,7 @@ const MobileBuild = () => {
             getForm(form_id);
         }
         if (form && form.questions) {
+            console.log(form);
             let q = (form.questions.find(x => x.q_id === q_id));
             if (q) {
                 if (q.type && !currentType) {

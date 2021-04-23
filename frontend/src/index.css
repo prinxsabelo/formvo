@@ -13,6 +13,13 @@ body.Dialog-active {
   overflow-y: hidden !important;
 }
 
+
+
+
+
+
+
+
 .slide-in-left-enter {
   transform: translateX(-100%);
 }
@@ -20,7 +27,7 @@ body.Dialog-active {
 .slide-in-left-enter-active {
   transform: translateX(0);
   opacity: 1;
-  transition: all 600ms;
+  transition: all 200ms;
 }
 
 .slide-in-left-exit {
@@ -31,17 +38,22 @@ body.Dialog-active {
 .slide-in-left-exit-active {
   transform: translateX(-100%);
   opacity: 0;
-  transition: all 600ms;
+  transition: all 200ms;
 }
 
+
+
+
+
+
 .slide-in-right-enter {
-  transform: translateX(100%);
+  transform: translateX(-100%);
 }
 
 .slide-in-right-enter-active {
   transform: translateX(0);
   opacity: 1;
-  transition: all 600ms;
+  transition: all 200ms;
 }
 
 .slide-in-right-exit {
@@ -50,10 +62,17 @@ body.Dialog-active {
 }
 
 .slide-in-right-exit-active {
-  transform: translateX(100%);
+  transform: translateX(-100%);
   opacity: 0;
-  transition: all 600ms;
+  transition: all 200ms;
 }
+
+
+
+
+
+
+
 .builder-block {
   height: 95vh;
   overflow: hidden;

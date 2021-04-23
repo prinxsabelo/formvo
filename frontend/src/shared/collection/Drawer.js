@@ -11,7 +11,7 @@ const Drawer = props => {
   
     let content = (
         <CSSTransition
-            nodeRef={nodeRef} in={props.show} timeout={600} mountOnEnter unmountOnExit
+            nodeRef={nodeRef} in={props.show}  timeout={200} mountOnEnter unmountOnExit
         >
             <aside className='drawer' onClick={props.onClick}>
                 <div className="container px-6 py-3 shadow">

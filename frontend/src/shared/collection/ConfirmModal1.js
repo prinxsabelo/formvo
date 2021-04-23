@@ -1,8 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useEffect, useState, useContext } from "react";
 import { Context } from "../../context/Context";
-
-export default function ConfirmModal(props) {
+import { ExclamationIcon } from '@heroicons/react/outline'
+export default function DeleteModal(props) {
   const cancelButtonRef = useRef();
   const { closeModal, isOpen, confirmMessage, handleDelete } = useContext(
     Context

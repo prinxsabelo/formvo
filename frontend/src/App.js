@@ -6,63 +6,53 @@ import Header from "./shared/header/Header";
 import Wrapper from "./shared/wrapper/Wrapper";
 import ViewportProvider from "./context/ViewportContext";
 import MobileBuild from "./formBuilder/pages/MobileBuild";
-import PayloadProvider from './context/Payload';
+import PayloadProvider from "./context/Payload";
 import Pop from "./shared/collection/Pop";
 import Dialog from "./shared/collection/Dialog";
 import ResultContextProvider from "./context/ResultContext";
 import RespondentDetail from "./formBuilder/pages/RespondentDetail";
-import ConfirmModal from "./shared/collection/ConfirmModal";
+import ModalContextProvider from "./context/ModalContext";
 
 function App() {
   return (
     <Router>
       <ContextProvider>
-
         <FormContextProvider>
-
           <ViewportProvider>
             <PayloadProvider>
               <ResultContextProvider>
-                <Switch>
-                  <Route path="/form/:form_id/questions/compose">
-                    <MobileBuild />
-                  </Route>
-                  <Route path="/form/:form_id/questions/:q_id">
-                    <MobileBuild />
-                  </Route>
-                  <Route path="/form/:form_id/results/responses/:token">
-                    <RespondentDetail />
-                  </Route>
-                  <Route path="/form/:form_id">
-                    <FormBuilder />
-                  </Route>
+                <ModalContextProvider>
+                  <Switch>
+                    <Route path="/form/:form_id/questions/compose">
+                      <MobileBuild />
+                    </Route>
+                    <Route path="/form/:form_id/questions/:q_id">
+                      <MobileBuild />
+                    </Route>
+                    <Route path="/form/:form_id/results/responses/:token">
+                      <RespondentDetail />
+                    </Route>
+                    <Route path="/form/:form_id">
+                      <FormBuilder />
+                    </Route>
 
-
-                  <Route path={["/", "/home", "/forms", "/trash"]} exact>
-                    <div className=" bg-white text-black w-full text-white flex flex-col h-screen">
-                      <Header />
-                      <Wrapper />
-                      <Dialog />
-                      <ConfirmModal />
-                      {/* <Dialog /> */}
-
-                    </div>
-                  </Route>
-                </Switch>
+                    <Route path={["/", "/home", "/forms", "/trash"]} exact>
+                      <div className=" bg-white text-black w-full text-white flex flex-col h-screen">
+                        <Header />
+                        <Wrapper />
+                        <Dialog />
+                        {/* <DeleteModal /> */}
+                        {/* <Dialog /> */}
+                      </div>
+                    </Route>
+                  </Switch>
+                </ModalContextProvider>
               </ResultContextProvider>
-
             </PayloadProvider>
-
           </ViewportProvider>
-
-
-
         </FormContextProvider>
-
       </ContextProvider>
-
     </Router>
-
   );
 }
 

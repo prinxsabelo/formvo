@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import { Context } from "../../../context/Context";
-import ConfirmModal from "../../../shared/collection/ConfirmModal";
+import DeleteModal from "../../../shared/collection/DeleteModal";
 import SumChildReport from "./SumChildReport";
 
 const SumReport = (props) => {
   const { report } = props;
-    const { openConfirmModal } = useContext(Context);
+    const { openDeleteModal } = useContext(Context);
     const tester = () =>{
         const content = <div>xxxxx</div>
-        openConfirmModal('This will permanently delete response.');  
+        openDeleteModal();  
     }
   return (
     <>
@@ -34,7 +34,7 @@ const SumReport = (props) => {
           </div>
         )}
       </div>
-      <ConfirmModal />
+      <DeleteModal onDelete={() => alert('xx11x')} />
     </>
   );
 };

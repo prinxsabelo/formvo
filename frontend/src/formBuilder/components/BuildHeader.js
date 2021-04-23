@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import Button from "../../shared/collection/Button";
-
 import QDrawer from "../../shared/collection/QDrawer";
 import QTypeIcon from "../../shared/collection/QTypeIcon";
 import { Payload } from "../../context/Payload";
@@ -21,7 +20,6 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
     currentType,
     setCurrentType,
     setDrawerPosition,
-    developQuestion,
   } = useContext(Payload);
   const qType = questionTypes.find((qt) => qt.type === type);
   const { required } = properties;
@@ -62,7 +60,7 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
     history.push(`/form/${form.form_id}/questions/${new_q_id}`);
   };
   return (
-    <div className="flex md:flex-row-reverse justify-between justify-end  p-1 bg-gray-100 w-full md:w-3/4 text-right">
+    <div className="flex  justify-between justify-end  p-1 bg-gray-100 w-full md:w-3/4 text-right">
       <div className="md:hidden flex w-44 items-center">
         <Button className="text-gray-800 w-10 bg-white flex items-center justify-center">
           {index > 0 ? (
@@ -71,13 +69,13 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
               onClick={() => goto("backward")}
             />
           ) : (
-            <span className="w-6">.</span>
+            <span className="w-5">.</span>
           )}
         </Button>
         <Button className="text-gray-800 w-10 bg-white flex items-center justify-center">
           {form.questions.length > index + 1 ? (
             <ChevronDoubleRightIcon
-              className="w-6"
+              className="w-5"
               onClick={() => goto("forward")}
             />
           ) : (
@@ -98,23 +96,25 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
           ))}
         </div>
       </div>
-      <div className="flex w-full justify-end md:flex-row-reverse md:justify-between">
-        {qType && (
-          <Button className="bg-gray-900 uppercase" onClick={openDrawer}>
-            <span className="flex items-center">
-              <div className="px-1 ">
-                <QTypeIcon
-                  color="yellow"
-                  className="w-8 text-gray-100"
-                  type={qType.type}
-                  shape={properties.shape}
-                />
-              </div>
-              {qType.label}
-            </span>
-          </Button>
-        )}
-        {children}
+      <div className="flex w-full justify-end md:space-x-4 ">
+        <div className="flex space-x-5">{children}</div>
+        <div>
+          {qType && (
+            <Button className="bg-gray-900 uppercase" onClick={openDrawer}>
+              <span className="flex items-center">
+                <div className="px-1 ">
+                  <QTypeIcon
+                    color="yellow"
+                    className="w-8 text-gray-100"
+                    type={qType.type}
+                    shape={properties.shape}
+                  />
+                </div>
+                {qType.label}
+              </span>
+            </Button>
+          )}
+        </div>
       </div>
 
       <QDrawer show={drawerIsOpen} />

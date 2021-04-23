@@ -61,11 +61,7 @@ const Properties = (props) => {
     ]
     return (
         <div className="flex w-full items-center md:space-x-2 mr-2 flex-start">
-            <div className="h-8 hidden md:flex items-center justify-center text-lg pl-1">
-                <div className="rounded-full h-8 w-8 text-sm flex items-center justify-center bg-gray-300">
-                    {props.index}
-                </div>
-            </div>
+           
             <div className="flex-auto md:h-16 flex  items-center text-lg md:text-xl mb-4 md:mb-0">
                 {
                     props.type === "CHOICE" && properties && (
@@ -83,9 +79,9 @@ const Properties = (props) => {
                 }
                 {
                     props.type === "RATING" && properties && (
-                        <div className="w-full py-2 flex md:flex-auto justify-center items-center space-x-4 mr-1 md:px-4">
+                        <div className="w-full py-2 flex md:flex-auto justify-center items-center space-x-2 mr-1 md:px-4">
 
-                            <div className="md:text-xl w-1/3 flex justify-center">
+                            <div className="md:text-xl w-1/3 flex justify-center ">
                                 Choose Icon
                             </div>
                             <div className="flex flex-auto justify-between items-center space-x-2">

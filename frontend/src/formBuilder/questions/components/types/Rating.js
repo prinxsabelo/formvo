@@ -1,31 +1,40 @@
 import QTypeIcon from "../../../../shared/collection/QTypeIcon";
 
 const Rating = (props) => {
-    const ratings = [{}, {}, {}, {}, {}];
+
+    let ratings = 5;
     return (
         <div className="w-full flex pl-2 p-5  items-center border">
             {props.properties.shape === "star" &&
                 <>
-                    {ratings.map((star, index) =>
-                        <QTypeIcon className="w-14" color="black" shape="star" type="RATING" key={index} />
-                    )}
+                 {Array.from(Array(parseInt(ratings)),(rating, index) => {
+                    return (
+                        <QTypeIcon className="w-14" name={rating} color="black" shape="star" type="RATING" key={index} />
+                    )
+                 })}
                 </>
 
             }
             {
                 props.properties.shape === "heart" &&
                 <>
-                    {ratings.map((shape, index) =>
-                        <QTypeIcon className="w-14" color="black" shape="heart" type="RATING" key={index} />
-                    )}
+                 {Array.from(Array(parseInt(ratings)), (rating, index) => {
+                    return (
+                        <QTypeIcon className="w-14" name={rating}  color="black" shape="heart" type="RATING" key={index} />
+                    )
+                 })}
+                  
                 </>
             }
             {
                 props.properties.shape === "thumb" &&
                 <>
-                    {ratings.map((star, index) =>
-                        <QTypeIcon className="w-14" color="black" shape="thumb" type="RATING" key={index} />
-                    )}
+                {Array.from(Array(parseInt(ratings)), (rating, index) => {
+                    return (
+                        <QTypeIcon className="w-14" name={rating}  color="black" shape="thumb" type="RATING" key={index} />
+                    )
+                 })}
+                    
                 </>
             }
 

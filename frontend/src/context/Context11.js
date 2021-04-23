@@ -1,5 +1,6 @@
-import { useState, createContext } from "react";
-
+import { useState, createContext, useEffect, useContext } from "react";
+import { Payload } from "./Payload";
+const QUESTION = "QUESTION";
 export const Context = createContext();
 const ContextProvider = (props) => {
   const sideBarItems = [
@@ -16,32 +17,42 @@ const ContextProvider = (props) => {
   ];
 
   const [headerContent, setHeaderContent] = useState(null);
-  const [dialog, showDialog] = useState(false);
+  const [Dialog, showDialog] = useState(false);
+
   const [DialogContent, setDialogContent] = useState({
     type: "",
     header: "",
     placeholder: "",
   });
 
- 
   const [modalShow, setModalShow] = useState(false);
 
   const closeDialog = () => {
     showDialog(false);
   };
 
-  const [open, setOpen] = useState(false);
-  const [confirmMessage, setConfirmMessage ] = useState("");
-  const closeModal = () =>{
-        setOpen(false);
-  }
-  const openDeleteModal = () =>{
-     
-          setOpen(true);
-  }
-  const handleDelete = () =>{
-          alert('delete');
-  }
+  const [isOpen, setIsOpen] = useState(false);
+  const [confirmMessage, setConfirmMessage] = useState("");
+  const [confirmDelete, setConfirmDelete] = useState({});
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  // const openDeleteModal = ({ type, message, id }) => {
+  //   setConfirmMessage({ type, message, id });
+  //   setIsOpen(true);
+  // };
+  const closeDeleteModal = () => {
+    // setConfirmDelete({});
+    console.log('xxx');
+    setConfirmDelete();
+  };
+  const handleDelete = () => {
+    if (confirmMessage.type == QUESTION) {
+      setIsOpen(false);
+      setConfirmDelete({ type: QUESTION, q_id: confirmMessage.id });
+    }
+  };
+
   return (
     <Context.Provider
       value={{
@@ -49,7 +60,7 @@ const ContextProvider = (props) => {
         setHeaderContent,
         sideBarItems,
         navItems,
-        dialog,
+        Dialog,
         showDialog,
         DialogContent,
         setDialogContent,
@@ -58,11 +69,13 @@ const ContextProvider = (props) => {
         setModalShow,
         // ModalContent,
         // setModalContent,
-        open,
+        isOpen,
         closeModal,
         openDeleteModal,
         confirmMessage,
-        handleDelete 
+        handleDelete,
+        confirmDelete,
+        closeDeleteModal,
       }}
     >
       {props.children}

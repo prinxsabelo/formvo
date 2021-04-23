@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Payload } from "../../context/Payload";
+import Backdrop from "../../shared/collection/Backdrop";
 import Button from "../../shared/collection/Button";
+import QDrawer from "../../shared/collection/QDrawer";
 import QuestionList from "../questions/components/QuestionList"
 
 const Questions = (props) => {
@@ -52,8 +54,9 @@ const Questions = (props) => {
                 </>
             }
         </>}
-
-
+        <QDrawer show={drawerIsOpen}  />
+        {drawerIsOpen && <Backdrop onClick={closeDrawer} />}
     </div>
+    
 }
 export default Questions;

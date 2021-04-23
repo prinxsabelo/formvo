@@ -6,7 +6,7 @@ import Backdrop from './Backdrop';
 import Button from './Button';
 
 const Dialog = (props) => {
-    const { Dialog, showDialog, closeDialog, DialogContent, } = useContext(Context);
+    const { dialog, showDialog, closeDialog, DialogContent, } = useContext(Context);
     const { submitForm } = useContext(FormContext);
     const { header, placeholder } = DialogContent;
     const [title, setTitle] = useState("");
@@ -28,7 +28,7 @@ const Dialog = (props) => {
     }
     const { q_id } = DialogContent;
     return <>
-        {Dialog &&
+        {dialog &&
             <>
                 <Backdrop onClick={closeDialog} />
                 {DialogContent.type === "form" &&

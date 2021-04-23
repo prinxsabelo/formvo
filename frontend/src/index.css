@@ -155,7 +155,7 @@ input:checked ~ .toggle__dot {
 
 @media only screen and (min-width: 768px) {
   .q-list {
-    height: 89vh;
+    height: 85vh;
   }
 }
 

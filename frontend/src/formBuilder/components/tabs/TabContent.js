@@ -1,6 +1,6 @@
 
 import { Route, useRouteMatch } from "react-router-dom";
-import ConfirmModal from "../../../shared/collection/ConfirmModal";
+import DeleteModal from "../../../shared/collection/DeleteModal";
 import DesktopBuild from "../../pages/DesktopBuild";
 import Questions from "../../pages/Questions";
 import Results from "../../pages/Results";
@@ -38,7 +38,7 @@ const TabContent = (props) => {
                
             </div>
         </div>
-        <ConfirmModal />
+        {/* <DeleteModal /> */}
         </>
     )
 }

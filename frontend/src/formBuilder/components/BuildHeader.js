@@ -80,11 +80,11 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
         <Button className="text-gray-800 w-10 bg-white flex items-center justify-center">
           {form.questions.length > index + 1 ? (
             <ChevronDoubleRightIcon
-              className="w-5"
+              className="w-6"
               onClick={() => goto("forward")}
             />
           ) : (
-            <span className="w-6">.</span>
+            <span className="w-5">.</span>
           )}
         </Button>
         <div className="py-3 px-1 bg-white">

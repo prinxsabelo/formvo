@@ -7,11 +7,9 @@ import TabContent from "../components/tabs/TabContent";
 import NavBar from "../../shared/wrapper/NavBar";
 import { Payload } from "../../context/Payload";
 import Questions from "./Questions";
-import { Context } from "../../context/Context";
 const FormBuilder = () => {
     let { form_id } = useParams();
     const { getForm, form} = useContext(Payload);
-    const { isOpen } = useContext(Context);  
     if (!form) {
         getForm(form_id);
     }

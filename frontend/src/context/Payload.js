@@ -2,12 +2,11 @@ import { createContext, useContext, useState } from "react";
 import PayloadApi from "./payload-api";
 import { v4 as uuid } from "uuid";
 import { ViewportContext } from "./ViewportContext";
-import { Redirect, useHistory } from "react-router-dom";
-import ReportApi from "./report-api";
+import {  useHistory } from "react-router-dom";
 
 export const Payload = createContext();
 
-const breakpoint = 768;
+const breakpoint = 768;  
 
 const PayloadProvider = (props) => {
   const history = useHistory();
@@ -33,6 +32,7 @@ const PayloadProvider = (props) => {
   ]);
 
   const getForm = (form_id) => {
+    console.log(form_id);
     const fetchForm = async () => {
       try {
         const data = await PayloadApi;

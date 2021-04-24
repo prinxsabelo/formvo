@@ -22,7 +22,7 @@ const FormLabel = (props) => {
   };
   const submitForm = (e) => {
     e.preventDefault();
-    updateForm(title, form_id);
+    renameForm(title, form_id);
   };
   const addQuestion = () => {
     drawerIsOpen ? closeDrawer() : openDrawer();
@@ -35,7 +35,7 @@ const FormLabel = (props) => {
   const closeDrawer = () => {
     setDrawerIsOpen(false);
   };
-  const { forms, updateForm } = useContext(FormContext);
+  const { forms, renameForm } = useContext(FormContext);
   let { form_id, q_id } = useParams();
 
   const form = forms.find((f) => f.form_id === form_id);

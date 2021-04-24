@@ -6,8 +6,6 @@ import ResponseApi from "./response-api";
 
 export const ResultContext = createContext();
 
-const breakpoint = 768;
-
 const ResultContextProvider = (props) => {
   const [report, setReport] = useState([]);
   const [formResponses, setFormReponses] = useState([]);
@@ -25,6 +23,7 @@ const ResultContextProvider = (props) => {
   };
 
   const getFormResponses = (form_id) => {
+    console.log(form_id);
     const fetchFormResponses = async () => {
       try {
         const data = await ResponseApi;
@@ -34,12 +33,13 @@ const ResultContextProvider = (props) => {
     fetchFormResponses();
   };
   const deleteFormResponses = (arr) => {
-      console.log(arr,formResponses);
-      // const respondents = formResponses.respondents.filter(({token}) => !arr.includes(token));
-      // console.log(respondents);
-      // setFormReponses({ ...formResponses, respondents });
+    console.log(arr);
+    // console.log(arr,formResponses);
+    // const respondents = formResponses.respondents.filter(({token}) => !arr.includes(token));
+    // console.log(respondents);
+    // setFormReponses({ ...formResponses, respondents });
   };
-  
+
   return (
     <ResultContext.Provider
       value={{

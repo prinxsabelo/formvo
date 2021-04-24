@@ -76,7 +76,7 @@ export default function DeleteModal(props) {
                       <p className="text-base text-gray-800 font-medium">
                         {props.message && <>{props.message} </>}
                       </p>
-                      <p className="text-sm text-gray-700">Once you delete it cannot be undone.</p>
+                      <p className="text-sm text-gray-700">Once you delete, it cannot be undone.</p>
                     </div>
                   </div>
                 </div>

@@ -2,17 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { ResultContext } from "../../context/ResultContext";
 import Backdrop from "../../shared/collection/Backdrop";
-import Drawer from "../../shared/collection/Drawer";
 import QTypeIcon from "../../shared/collection/QTypeIcon";
 import { ViewportContext } from "../../context/ViewportContext";
 
 import "./Responses.css";
-import ResponsesList from "../components/responses/RespondentsList";
 import Pop from "../../shared/collection/Pop";
 import RespondentsList from "../components/responses/RespondentsList";
 import DeleteModal from "../../shared/collection/DeleteModal";
 import { Context } from "../../context/Context";
-const Responses = (props) => {
+import RDrawer from "../../shared/collection/RDrawer";
+const Responses = () => {
   let { form_id } = useParams();
   const breakpoint = 768;
   const { width } = useContext(ViewportContext);
@@ -28,25 +27,39 @@ const Responses = (props) => {
   const { openDeleteModal, closeModal } = useContext(Context);
   const showRespondent = (resp) => {
     setDrawerIsOpen(true);
+    let index = respondents.findIndex((x) => x.token === resp.token);
+    resp.index = index + 1;
     setDetail(resp);
   };
   const closeDrawer = () => {
     setDrawerIsOpen(false);
   };
   const handleRespondent = (event) => {
-    console.log("xxx");
+    //variable checker to check and confirm selected..
+    let checker = arr.length;
     const { name, checked } = event.target;
     let index = respondents.findIndex((x) => x.token === name);
     if (checked) {
-      console.log(name);
       setArr([...arr, name]);
       respondents[index].isChecked = true;
+      checker += 1;
     } else {
       respondents[index].isChecked = false;
       const newArr = arr.filter((x) => x !== name);
       setArr(newArr);
+      checker -= 1;
     }
     setRespondents(respondents);
+    let checkAllBox = document.getElementById("checkAllBox");
+
+    if (checkAllBox) {
+      // once checker is equal to total respodent checkAllBox to be true..
+      if (checker === respondents.length) {
+        checkAllBox.checked = true;
+      } else {
+        checkAllBox.checked = false;
+      }
+    }
   };
   const clearAll = () => {
     let resp = respondents.map((x) => {
@@ -55,6 +68,10 @@ const Responses = (props) => {
     });
     setRespondents(resp);
     setArr([]);
+    let checkAllBox = document.getElementById("checkAllBox");
+    if (checkAllBox) {
+      checkAllBox.checked = false;
+    }
   };
   const selectAll = () => {
     // console.log(respondents);
@@ -66,9 +83,15 @@ const Responses = (props) => {
     });
     setArr(newArr);
     setRespondents(resp);
+    if (newArr.length === resp.length) {
+      let checkAllBox = document.getElementById("checkAllBox");
+      if (checkAllBox) {
+        checkAllBox.checked = true;
+      }
+    }
   };
   const handleAll = (event) => {
-    const { name, checked } = event.target;
+    const { checked } = event.target;
     if (checked) {
       selectAll();
     } else {
@@ -80,14 +103,17 @@ const Responses = (props) => {
   };
   const handleDelete = () => {
     closeModal();
+    //Deleting here..
+    deleteFormResponses(arr);
     const resps = respondents.filter(({ token }) => !arr.includes(token));
     setRespondents(resps);
     setArr([]);
     alert("deleted..");
   };
   useEffect(() => {
-    getFormResponses(form_id);
+    let checkAllBox = document.getElementById("checkAllBox");
 
+    getFormResponses(form_id);
     if (formResponses) {
       if (formResponses.questions) {
         let q = formResponses.questions;
@@ -107,6 +133,12 @@ const Responses = (props) => {
               }
             });
             setArr(newArr);
+            //If Respondent is greater than zero and  exist and selected = total respondents.
+            if (resp.length > 0 && resp.length === newArr.length) {
+              if (checkAllBox) {
+                checkAllBox.checked = true;
+              }
+            }
           }
         }
       }
@@ -129,6 +161,7 @@ const Responses = (props) => {
                           name="all"
                           className="form-checkbox w-7 h-7  cursor-pointer "
                           type="checkbox"
+                          id="checkAllBox"
                           onChange={handleAll}
                         />
                       </th>
@@ -160,13 +193,14 @@ const Responses = (props) => {
                             key={respondent.token}
                             className="border-b   hover:bg-gray-100 cursor-pointer"
                           >
-                            <td className="flex items-center w-full items-center h-14 justify-center hover:bg-gray-200">
-                              <input  name={respondent.token}
+                            <td className="flex items-center w-full items-center h-14 justify-center hover:bg-gray-200 cursor-default bg-white">
+                              <input
+                                name={respondent.token}
                                 className="form-checkbox w-7 h-7  cursor-pointer "
                                 type="checkbox"
                                 checked={respondent.isChecked}
-                                onChange={handleRespondent}/>
-                             
+                                onChange={handleRespondent}
+                              />
                             </td>
                             <td onClick={() => showRespondent(respondent)}>
                               <div className="flex p-4">
@@ -237,7 +271,7 @@ const Responses = (props) => {
         </>
       )}
       {drawerIsOpen && <Backdrop onClick={closeDrawer} />}
-      <Drawer show={drawerIsOpen} type="response" detail={detail} />
+      <RDrawer show={drawerIsOpen} type="response" detail={detail} />
       {arr.length > 0 && (
         <>
           {" "}

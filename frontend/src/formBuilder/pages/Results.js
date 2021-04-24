@@ -1,6 +1,5 @@
-import { Redirect, Route, Switch, useRouteMatch } from "react-router"
+import { Redirect, Route,  useRouteMatch } from "react-router"
 import ResultTabs from "../components/tabs/ResultTabs";
-import RespondentDetail from "./RespondentDetail";
 import Responses from "./Responses";
 import Summary from "./Summary";
 
@@ -9,7 +8,7 @@ const result_tabs = [
     { id: 2, label: "Responses", link: `responses` },
 ]
 const Results = (props) => {
-    const { path, url } = useRouteMatch();
+    const { url } = useRouteMatch();
 
     return (
         <>

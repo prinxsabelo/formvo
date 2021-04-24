@@ -22,12 +22,12 @@ const Pop = props => {
                                 <div>  {props.length}  {props.length > 1 ? <>responses </>: <>response </>}  selected</div>
                                 {
                                     props.total > props.length ?
-                                            <button className="underline outline-none focus:outline-none hover:text-red-700" onClick={props.selectAll}>
+                                            <button className="underline outline-none focus:outline-none hover:text-red-700 font-bold" onClick={props.selectAll}>
                                                     Select All
                                             </button>
                                             
                                             :
-                                            <button className="underline outline-none focus:outline-none hover:text-red-700" onClick={props.clearAll}>
+                                            <button className="underline outline-none focus:outline-none hover:text-red-700 font-bold" onClick={props.clearAll}>
                                                     Clear Selection
                                             </button>
                                        

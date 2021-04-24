@@ -9,6 +9,7 @@ import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/outline";
+import Backdrop from "../../shared/collection/Backdrop";
 const BuildHeader = ({ q_id, properties, type, children }) => {
   const history = useHistory();
   const {
@@ -44,6 +45,10 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
     setDrawerIsOpen(true);
     setTypeAction("edit");
   };
+  const closeDrawer = () => {
+    setDrawerIsOpen(false);
+  };
+
   let index = form.questions.findIndex((q) => q.q_id === q_id);
   const goto = (checker) => {
     let new_q_id = -1;
@@ -118,6 +123,7 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
       </div>
 
       <QDrawer show={drawerIsOpen} />
+      {drawerIsOpen && <Backdrop onClick={closeDrawer} />}
     </div>
   );
 };

@@ -3,24 +3,27 @@ import { NavLink, useRouteMatch } from "react-router-dom";
 import { Context } from "../../../context/Context";
 import { Payload } from "../../../context/Payload";
 import Backdrop from "../../../shared/collection/Backdrop";
-import DeleteModal from "../../../shared/collection/DeleteModal";
-import Dialog from "../../../shared/collection/Dialog";
+
 import Pop from "../../../shared/collection/Pop";
 
 import QTypeIcon from "../../../shared/collection/QTypeIcon";
-const QuestionItem = ({ q_id, title, type, properties, index, qlength, checkDelete }) => {
+const QuestionItem = ({
+  q_id,
+  title,
+  type,
+  properties,
+  index,
+  checkDelete,
+}) => {
   const {
     showQuestion,
     questionDetail,
     setTypeAction,
-    deleteQuestion,
+
     copyQuestion,
   } = useContext(Payload);
-  const { dialog, showDialog, setDialogContent, openDeleteModal } = useContext(
-    Context
-  );
+
   const [pop, setPop] = useState(false);
-  const [delCheck, setDelCheck] = useState(false);
 
   const openPop = () => {
     setPop(true);
@@ -30,18 +33,10 @@ const QuestionItem = ({ q_id, title, type, properties, index, qlength, checkDele
     setPop(false);
   };
   const checkItemDelete = ({ q_id }) => {
-    checkDelete({q_id})
+    setPop(false);
+    checkDelete({ q_id });
   };
 
-  const cancel = () => {
-    showDialog(false);
-  };
-  const onDelete = (q_id) => {
-    console.log(q_id);
-    // deleteQuestion({ q_id });
-    // setPop(false);
-    // showDialog(false);
-  };
   const { url } = useRouteMatch();
   const header = (
     <div className="flex w-full items-center -mb-1 space-x-2 py-4 px-3 truncate text-lg bg-white">
@@ -118,7 +113,6 @@ const QuestionItem = ({ q_id, title, type, properties, index, qlength, checkDele
             </svg>
           </div>
 
-          {/* } */}
         </div>
       </div>
 
@@ -155,12 +149,9 @@ const QuestionItem = ({ q_id, title, type, properties, index, qlength, checkDele
         show={pop}
         message="question"
         copy={() => copy()}
-        del={() => checkDelete({ q_id })}
+        del={() => checkItemDelete({ q_id })}
       />
       {pop && <Backdrop onClick={() => setPop(false)} />}
-
-      <Dialog show={dialog} onDelete={onDelete} cancel={cancel} />
-      {dialog && <Backdrop onClick={() => showDialog(false)} />}
     </>
   );
 };

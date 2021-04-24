@@ -13,7 +13,7 @@ table {
   }
   
   thead tr > th {
-    background:#ccc;
+
     position: sticky;
     padding:.5rem;
     z-index:2;
@@ -31,7 +31,7 @@ table {
   }
   
   tbody tr > :first-child {
-    background:#ddd;
+   
     position: sticky;
     z-index:1;
     left:0;

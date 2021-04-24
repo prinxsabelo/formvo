@@ -13,13 +13,6 @@ body.Dialog-active {
   overflow-y: hidden !important;
 }
 
-
-
-
-
-
-
-
 .slide-in-left-enter {
   transform: translateX(-100%);
 }
@@ -27,7 +20,7 @@ body.Dialog-active {
 .slide-in-left-enter-active {
   transform: translateX(0);
   opacity: 1;
-  transition: all 200ms;
+  transition: all 400ms;
 }
 
 .slide-in-left-exit {
@@ -38,22 +31,17 @@ body.Dialog-active {
 .slide-in-left-exit-active {
   transform: translateX(-100%);
   opacity: 0;
-  transition: all 200ms;
+  transition: all 400ms;
 }
 
-
-
-
-
-
 .slide-in-right-enter {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 
 .slide-in-right-enter-active {
   transform: translateX(0);
   opacity: 1;
-  transition: all 200ms;
+  transition: all 400ms;
 }
 
 .slide-in-right-exit {
@@ -62,16 +50,31 @@ body.Dialog-active {
 }
 
 .slide-in-right-exit-active {
-  transform: translateX(-100%);
+  transform: translateX(100%);
   opacity: 0;
-  transition: all 200ms;
+  transition: all 400ms;
 }
 
+.slide-in-bottom-enter {
+  transform: translateY(-100%);
+}
 
+.slide-in-bottom-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 400ms;
+}
 
+.slide-in-bottom-exit {
+  transform: translateY(0%);
+  opacity: 1;
+}
 
-
-
+.slide-in-bottom-exit-active {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 400ms;
+}
 
 .builder-block {
   height: 95vh;
@@ -187,10 +190,12 @@ input:checked ~ .toggle__dot {
   scroll-behavior: smooth;
 }
 
-button{
+button {
   outline: none !important;
-
 }
-button:focus{
+button:focus {
   outline: none !important;
+}
+.form-checkbox {
+  padding: 2rem;
 }

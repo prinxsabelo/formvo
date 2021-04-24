@@ -34,7 +34,6 @@ const QuestionList = (props) => {
   };
   const handleDelete = () =>{
       closeModal();
-      console.log(question);
       deleteQuestion(question);
   }
   const { questions } = props;

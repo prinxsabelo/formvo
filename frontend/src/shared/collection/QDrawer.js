@@ -1,11 +1,12 @@
 import "./QDrawer.css";
 import ReactDOM from "react-dom";
-import { useContext, useRef } from "react";
+import { useContext, useRef, createRef } from "react";
 import QTypeIcon from "./QTypeIcon";
 import { CSSTransition } from "react-transition-group";
 import { Payload } from "../../context/Payload";
 const QDrawer = (props) => {
   const nodeRef = useRef(null);
+
   const {
     addQuestion,
     currentType,
@@ -28,13 +29,14 @@ const QDrawer = (props) => {
   };
   let content = (
     <CSSTransition
-    classNames={`${drawerPosition === "left" ? 'slide-in-left' : 'slide-in-right'}`}
+    
+      classNames={`${
+        drawerPosition === "left" ? "slide-in-left" : "slide-in-right"
+      }`}
       in={props.show}
-      timeout={200}
-     
+      timeout={400}
       mountOnEnter
       unmountOnExit
-   
     >
       <aside
         className={drawerPosition === "left" ? `left-drawer` : `right-drawer`}

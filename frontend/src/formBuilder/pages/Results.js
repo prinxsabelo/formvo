@@ -17,7 +17,7 @@ const Results = (props) => {
                 <ResultTabs result_tabs={result_tabs} />
             </header>
 
-            <main className="mt-8 main pb-4">
+            <main className="md:mt-8 main pb-4">
                 <Route path={`${url}`} exact>
                     <Redirect to={`${url}/summary`} />
 

@@ -117,21 +117,21 @@ const QuestionItem = ({
       </div>
 
       <div className="md:hidden">
-        <div className="flex items-center  border shadow  w-full font-medium mb-1">
+        <div className="flex items-center py-1 border-b-2 shadow space-x-1 w-full font-medium">
           <NavLink
             onClick={() => setTypeAction("..")}
-            className="flex items-center w-11/12 truncate px-2 space-x-2"
+            className="flex items-center w-11/12 truncate"
             to={`${url}/${q_id}`}
           >
-            <div className="flex bg-gray-200 p-2  rounded-full h-10 w-10 ">
+            <div className="flex bg-gray-200 p-2 m-1 rounded-full h-12 w-12 ">
               <QTypeIcon
                 color="red"
-                className="w-8"
+                className="w-10"
                 type={type}
                 shape={properties.shape}
               />
             </div>
-            <div className=" py-4 flex-auto ">{title}</div>
+            <div className=" py-4 px-1 ">{title}</div>
           </NavLink>
 
           <div

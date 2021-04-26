@@ -78,41 +78,49 @@ const FormItem = ({ form, checkDelete }) => {
   ];
 
   const { form_id, title, no_questions, no_responses, updated_at } = form;
-  const header = (
-    <div className="flex w-full items-center -mb-1 space-x-1 py-2 px-3 truncate text-lg bg-white">
-     
-      <div>{title}</div>
-    </div>
-  );
   return (
     <>
       <div
         className=" md:border-2  md:rounded-lg md:flex-row  md:m-3 hover:shadow-md
-                                shadow-sm   border   md:flex flex-col w-full mb-1    
+                                shadow-sm   border-b-4   md:flex flex-col w-full 
+                               
                         "
       >
         {/* Mobile Device Design Here.. */}
-        <div className="md:hidden flex items-center border-b  flex">
-          <div className="w-10/12 flex">
-            <NavLink
-              to={`/form/${form_id}/questions`}
-              className="flex w-full items-center py-2 px-2 space-x-2"
+        <div className="md:hidden flex items-center border-b py-2 space-x-2  bg-red-400">
+          <NavLink
+            to={`/form/${form_id}/questions`}
+            className="flex w-10 h-10 justify-center items-center p-2 ml-1 rounded-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              className="w-8 h-8 md:hidden"
+              fill="currentColor"
             >
-              <div className="flex-auto h-full border flex items-center justify-center">
-                xxx
-              </div>
-              <div className="truncate w-10/12">
-                <h3 className="text-lg w-full"> {title} xxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx</h3>
-                <div className="flex  space-x-4  w-full">
-                  <p className="text-xs">Modified on {updated_at} </p>
-                </div>
-              </div>
-            </NavLink>
-          </div>
-          <div className="flex-auto  flex items-center justify-center">
-            <button onClick={() => openPop()} className="w-full py-4 border">
-              <div>::</div>
-            </button>
+              <path
+                fillRule="evenodd"
+                d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </NavLink>
+          <NavLink
+            to={`/form/${form_id}/questions`}
+            className="flex-auto w-10/12"
+          >
+            <h3 className="text-lg "> {title}</h3>
+            <div className="flex  space-x-4  w-full">
+              <p className="text-xs">Modified on {updated_at} </p>
+             
+            </div>
+          </NavLink>
+          <div
+            className="flex-auto w-16 border-8 py-2 relative font-bold font-black
+                                    flex items-center justify-center"
+            onClick={() => openPop()}
+          >
+            <div>::</div>
           </div>
         </div>
 
@@ -143,7 +151,6 @@ const FormItem = ({ form, checkDelete }) => {
         </div>
       </div>
       <Pop
-        header={header}
         show={pop}
         message="form"
         copy={() => copy()}

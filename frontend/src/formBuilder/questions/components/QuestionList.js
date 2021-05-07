@@ -1,41 +1,23 @@
 import { useContext, useState } from "react";
 import { Context } from "../../../context/Context";
-import { Payload } from "../../../context/Payload";
+import { QuestionContext } from "../../../context/QuestionContext";
 import DeleteModal from "../../../shared/collection/DeleteModal";
 import QuestionItem from "./QuestionItem";
 
 const QuestionList = (props) => {
-  const {
-    drawerIsOpen,
-    setDrawerIsOpen,
-    setTypeAction,
-    questionDetail,
-   qDrawerPosition,
-   setQDrawerPosition,
-    deleteQuestion,
-  } = useContext(Payload);
-  const addQuestion = () => {
-    drawerIsOpen ? closeDrawer() : openDrawer();
-  };
- 
+  const { deleteQuestion } = useContext(QuestionContext);
+
   const { openDeleteModal, closeModal } = useContext(Context);
   const [question, setQuestion] = useState();
-  const openDrawer = () => {
-    setTypeAction("new");
-   setQDrawerPosition("left");
-    setDrawerIsOpen(true);
-  };
-  const closeDrawer = () => {
-    setDrawerIsOpen(false);
-  };
+
   const checkDelete = (q) => {
     setQuestion(q);
     openDeleteModal();
   };
-  const handleDelete = () =>{
-      closeModal();
-      deleteQuestion(question);
-  }
+  const handleDelete = () => {
+    closeModal();
+    deleteQuestion(question);
+  };
   const { questions } = props;
 
   return (
@@ -55,7 +37,10 @@ const QuestionList = (props) => {
           })}
         </div>
       </div>
-    <DeleteModal  onDelete={handleDelete} message="Do you really want to delete question?" />
+      <DeleteModal
+        onDelete={handleDelete}
+        message="Do you really want to delete question?"
+      />
     </>
   );
 };

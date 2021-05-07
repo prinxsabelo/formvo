@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { Payload } from "../../context/Payload";
 import Button from "../../shared/collection/Button";
 import BuildHeader from "../components/BuildHeader";
 import BuildRequired from "../components/BuildRequired";
@@ -9,6 +8,7 @@ import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/outline";
+import { QuestionContext } from "../../context/QuestionContext";
 const DesktopBuild = () => {
   const {
     showQuestion,
@@ -19,8 +19,8 @@ const DesktopBuild = () => {
     drawerIsOpen,
     setDrawerIsOpen,
     setTypeAction,
-   setQDrawerPosition,
-  } = useContext(Payload);
+    setQDrawerPosition,
+  } = useContext(QuestionContext);
   const { q_id } = questionDetail;
 
   const [question, setQuestion] = useState();
@@ -38,7 +38,7 @@ const DesktopBuild = () => {
   };
   const openDrawer = () => {
     setTypeAction("new");
-   setQDrawerPosition("right");
+    setQDrawerPosition("right");
     setDrawerIsOpen(true);
   };
   const closeDrawer = () => {

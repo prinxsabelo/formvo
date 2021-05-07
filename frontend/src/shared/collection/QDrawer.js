@@ -1,9 +1,9 @@
 import "./QDrawer.css";
 import ReactDOM from "react-dom";
-import { useContext, useRe, createRef } from "react";
+import { useContext } from "react";
 import QTypeIcon from "./QTypeIcon";
 import { CSSTransition } from "react-transition-group";
-import { Payload } from "../../context/Payload";
+import { QuestionContext } from "../../context/QuestionContext";
 const QDrawer = (props) => {
   const {
     addQuestion,
@@ -13,7 +13,7 @@ const QDrawer = (props) => {
     setDrawerIsOpen,
     typeAction,
     qDrawerPosition,
-  } = useContext(Payload);
+  } = useContext(QuestionContext);
 
   const setQType = (type) => {
     setDrawerIsOpen(false);

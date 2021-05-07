@@ -6,20 +6,20 @@ import Header from "./shared/header/Header";
 import Wrapper from "./shared/wrapper/Wrapper";
 import ViewportProvider from "./context/ViewportContext";
 import MobileBuild from "./formBuilder/pages/MobileBuild";
-import PayloadProvider from "./context/Payload";
-import Pop from "./shared/collection/Pop";
+
 import Dialog from "./shared/collection/Dialog";
 import ResultContextProvider from "./context/ResultContext";
 import RespondentDetail from "./formBuilder/pages/RespondentDetail";
 import ModalContextProvider from "./context/ModalContext";
+import QuestionProvider from "./context/QuestionContext";
 
 function App() {
   return (
     <Router>
       <ContextProvider>
-        <FormContextProvider>
-          <ViewportProvider>
-            <PayloadProvider>
+        <ViewportProvider>
+          <FormContextProvider>
+            <QuestionProvider>
               <ResultContextProvider>
                 <ModalContextProvider>
                   <Switch>
@@ -41,16 +41,14 @@ function App() {
                         <Header />
                         <Wrapper />
                         <Dialog />
-                        {/* <DeleteModal /> */}
-                        {/* <Dialog /> */}
                       </div>
                     </Route>
                   </Switch>
                 </ModalContextProvider>
               </ResultContextProvider>
-            </PayloadProvider>
-          </ViewportProvider>
-        </FormContextProvider>
+            </QuestionProvider>
+          </FormContextProvider>
+        </ViewportProvider>
       </ContextProvider>
     </Router>
   );

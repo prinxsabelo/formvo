@@ -2,7 +2,6 @@ import { useContext } from "react";
 import Button from "../../shared/collection/Button";
 import QDrawer from "../../shared/collection/QDrawer";
 import QTypeIcon from "../../shared/collection/QTypeIcon";
-import { Payload } from "../../context/Payload";
 import { useHistory } from "react-router-dom";
 import ToggleSwitch from "../../shared/collection/ToggleSwitch";
 import {
@@ -10,6 +9,7 @@ import {
   ChevronDoubleRightIcon,
 } from "@heroicons/react/outline";
 import Backdrop from "../../shared/collection/Backdrop";
+import { QuestionContext } from "../../context/QuestionContext";
 const BuildHeader = ({ q_id, properties, type, children }) => {
   const history = useHistory();
   const {
@@ -20,8 +20,8 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
     questionTypes,
     currentType,
     setCurrentType,
-   setQDrawerPosition,
-  } = useContext(Payload);
+    setQDrawerPosition,
+  } = useContext(QuestionContext);
   const qType = questionTypes.find((qt) => qt.type === type);
   const { required } = properties;
   const arr = [
@@ -41,7 +41,7 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
     if (!currentType && qType.type) {
       setCurrentType(qType.type);
     }
-   setQDrawerPosition("right");
+    setQDrawerPosition("right");
     setDrawerIsOpen(true);
     setTypeAction("edit");
   };

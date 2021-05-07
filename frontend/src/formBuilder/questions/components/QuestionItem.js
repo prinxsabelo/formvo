@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { NavLink, useRouteMatch } from "react-router-dom";
-import { Context } from "../../../context/Context";
-import { Payload } from "../../../context/Payload";
+
+import { QuestionContext } from "../../../context/QuestionContext";
 import Backdrop from "../../../shared/collection/Backdrop";
 
 import Pop from "../../../shared/collection/Pop";
@@ -21,7 +21,7 @@ const QuestionItem = ({
     setTypeAction,
 
     copyQuestion,
-  } = useContext(Payload);
+  } = useContext(QuestionContext);
 
   const [pop, setPop] = useState(false);
 
@@ -112,7 +112,6 @@ const QuestionItem = ({
               />
             </svg>
           </div>
-
         </div>
       </div>
 

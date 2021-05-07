@@ -12,6 +12,7 @@ import {
   CogIcon,
   ArrowLeftIcon,
 } from "@heroicons/react/outline";
+import { QuestionContext } from "../../context/QuestionContext";
 
 const FormLabel = (props) => {
   let history = useHistory();
@@ -20,8 +21,8 @@ const FormLabel = (props) => {
     setDrawerIsOpen,
     setTypeAction,
 
-   setQDrawerPosition,
-  } = useContext(Payload);
+    setQDrawerPosition,
+  } = useContext(QuestionContext);
   const changeHandler = (e) => {
     const { value } = e.target;
     setTitle(value);
@@ -35,7 +36,7 @@ const FormLabel = (props) => {
   };
   const openDrawer = () => {
     setTypeAction("new");
-   setQDrawerPosition("left");
+    setQDrawerPosition("left");
     setDrawerIsOpen(true);
   };
   const closeDrawer = () => {

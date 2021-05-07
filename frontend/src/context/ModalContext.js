@@ -1,11 +1,8 @@
 import { useState, createContext, useEffect, useContext } from "react";
-import { Payload } from "./Payload";
+
 const QUESTION = "QUESTION";
 export const ModalContext = createContext();
 const ModalContextProvider = (props) => {
-  
-  const { deleteSuccess } = useContext(Payload);
-
   const [isOpen, setIsOpen] = useState(false);
   const [confirmMessage, setConfirmMessage] = useState("");
   const [confirmDelete, setConfirmDelete] = useState({});
@@ -17,7 +14,7 @@ const ModalContextProvider = (props) => {
     setIsOpen(true);
   };
   const handleDelete = () => {
-      console.log('xxx');
+    console.log("xxx");
     if (confirmMessage.type == QUESTION) {
       setIsOpen(false);
       setConfirmDelete({ type: QUESTION, q_id: confirmMessage.id });
@@ -25,20 +22,19 @@ const ModalContextProvider = (props) => {
   };
 
   return (
-     <ModalContext.Provider
+    <ModalContext.Provider
       value={{
-       
         isOpen,
         closeModal,
         openDeleteModal,
         confirmMessage,
         handleDelete,
         confirmDelete,
-        setConfirmDelete
+        setConfirmDelete,
       }}
     >
       {props.children}
-     </ModalContext.Provider>
+    </ModalContext.Provider>
   );
 };
 export default ModalContextProvider;

@@ -7,7 +7,7 @@ import QuestionList from "../questions/components/QuestionList"
 
 const Questions = (props) => {
     const { form, drawerIsOpen, setDrawerIsOpen, setTypeAction,
-        setDrawerPosition } = useContext(Payload);
+       setQDrawerPosition } = useContext(Payload);
     const addQuestion = () => {
         drawerIsOpen
             ? closeDrawer()
@@ -16,7 +16,7 @@ const Questions = (props) => {
     const openDrawer = () => {
 
         setTypeAction("new");
-        setDrawerPosition("left")
+       setQDrawerPosition("left")
         setDrawerIsOpen(true);
 
     };

@@ -20,7 +20,7 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
     questionTypes,
     currentType,
     setCurrentType,
-    setDrawerPosition,
+   setQDrawerPosition,
   } = useContext(Payload);
   const qType = questionTypes.find((qt) => qt.type === type);
   const { required } = properties;
@@ -41,7 +41,7 @@ const BuildHeader = ({ q_id, properties, type, children }) => {
     if (!currentType && qType.type) {
       setCurrentType(qType.type);
     }
-    setDrawerPosition("right");
+   setQDrawerPosition("right");
     setDrawerIsOpen(true);
     setTypeAction("edit");
   };

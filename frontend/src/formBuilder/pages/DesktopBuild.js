@@ -19,7 +19,7 @@ const DesktopBuild = () => {
     drawerIsOpen,
     setDrawerIsOpen,
     setTypeAction,
-    setDrawerPosition,
+   setQDrawerPosition,
   } = useContext(Payload);
   const { q_id } = questionDetail;
 
@@ -38,7 +38,7 @@ const DesktopBuild = () => {
   };
   const openDrawer = () => {
     setTypeAction("new");
-    setDrawerPosition("right");
+   setQDrawerPosition("right");
     setDrawerIsOpen(true);
   };
   const closeDrawer = () => {

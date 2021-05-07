@@ -2,11 +2,11 @@ import { createContext, useContext, useState } from "react";
 import PayloadApi from "./payload-api";
 import { v4 as uuid } from "uuid";
 import { ViewportContext } from "./ViewportContext";
-import {  useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export const Payload = createContext();
 
-const breakpoint = 768;  
+const breakpoint = 768;
 
 const PayloadProvider = (props) => {
   const history = useHistory();
@@ -20,7 +20,7 @@ const PayloadProvider = (props) => {
   const [typeAction, setTypeAction] = useState("");
 
   //Default QDrawer position should be left..
-  const [drawerPosition, setDrawerPosition] = useState("left");
+  const [qDrawerPosition, setQDrawerPosition] = useState("left");
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
   const [question, setQuestion] = useState();
@@ -153,8 +153,8 @@ const PayloadProvider = (props) => {
         addQuestion,
         deleteQuestion,
         copyQuestion,
-        drawerPosition,
-        setDrawerPosition,
+        qDrawerPosition,
+        setQDrawerPosition,
       }}
     >
       {props.children}

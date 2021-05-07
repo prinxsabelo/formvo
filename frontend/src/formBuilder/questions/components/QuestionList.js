@@ -10,8 +10,8 @@ const QuestionList = (props) => {
     setDrawerIsOpen,
     setTypeAction,
     questionDetail,
-    drawerPosition,
-    setDrawerPosition,
+   qDrawerPosition,
+   setQDrawerPosition,
     deleteQuestion,
   } = useContext(Payload);
   const addQuestion = () => {
@@ -22,7 +22,7 @@ const QuestionList = (props) => {
   const [question, setQuestion] = useState();
   const openDrawer = () => {
     setTypeAction("new");
-    setDrawerPosition("left");
+   setQDrawerPosition("left");
     setDrawerIsOpen(true);
   };
   const closeDrawer = () => {

@@ -18,7 +18,8 @@ const FormContextProvider = (props) => {
           title: form.title,
           updated_at: "Nov 20, 2020",
           form_id: uuid(),
-          response: 0,
+          no_questions: 5,
+          no_responses: 5,
         },
       ]);
     }
@@ -59,28 +60,28 @@ const FormContextProvider = (props) => {
     }
   };
   const deleteForm = (form_id) => {
-     const filteredForms = forms.filter(f => f.form_id !== form_id);
-     setForms(filteredForms);
+    const filteredForms = forms.filter((f) => f.form_id !== form_id);
+    setForms(filteredForms);
   };
   const [forms, setForms] = useState([
     {
       form_id: "1",
       title: "Black cofee game",
-      no_questions:12,
+      no_questions: 12,
       no_responses: 5,
       updated_at: "Dec 25, 2020",
     },
     {
       form_id: "2",
       title: "Danegrous introduction",
-      no_questions:12,
+      no_questions: 12,
       no_responses: 5,
       updated_at: "Jan 1, 2021",
     },
     {
       form_id: "3",
       title: "Reconsider Baby",
-      no_questions:12,
+      no_questions: 12,
       no_responses: 5,
       updated_at: "OCt 21, 1997",
     },
@@ -158,7 +159,7 @@ const FormContextProvider = (props) => {
         title,
         setTitle,
         submitForm,
-        deleteForm
+        deleteForm,
       }}
     >
       {props.children}

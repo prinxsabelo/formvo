@@ -5,7 +5,6 @@ import QTypeIcon from "./QTypeIcon";
 import { CSSTransition } from "react-transition-group";
 import { Payload } from "../../context/Payload";
 const QDrawer = (props) => {
-
   const {
     addQuestion,
     currentType,
@@ -13,7 +12,7 @@ const QDrawer = (props) => {
     questionTypes,
     setDrawerIsOpen,
     typeAction,
-    drawerPosition,
+    qDrawerPosition,
   } = useContext(Payload);
 
   const setQType = (type) => {
@@ -27,12 +26,11 @@ const QDrawer = (props) => {
     }
   };
   let content;
-  if(drawerPosition){
+  if (qDrawerPosition) {
     content = (
-  
       <CSSTransition
         classNames={`${
-          drawerPosition === "left" ? "slide-in-left" : "slide-in-right"
+          qDrawerPosition === "left" ? "slide-in-left" : "slide-in-right"
         }`}
         in={props.show}
         timeout={400}
@@ -40,7 +38,9 @@ const QDrawer = (props) => {
         unmountOnExit
       >
         <aside
-          className={drawerPosition === "left" ? `q-left-drawer` : `q-right-drawer`}
+          className={
+            qDrawerPosition === "left" ? `q-left-drawer` : `q-right-drawer`
+          }
           onClick={props.onClick}
         >
           <div className="flex justify-center mt-2 border-b-2">
@@ -72,9 +72,12 @@ const QDrawer = (props) => {
           </div>
         </aside>
       </CSSTransition>
-  );
+    );
   }
 
-  return ReactDOM.createPortal(content, document.getElementById("qdrawer-hook"));
+  return ReactDOM.createPortal(
+    content,
+    document.getElementById("qdrawer-hook")
+  );
 };
 export default QDrawer;

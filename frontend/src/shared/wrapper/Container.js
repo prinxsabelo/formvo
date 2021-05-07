@@ -6,7 +6,7 @@ import Users from '../../users/pages/Users';
 
 const Container = () => {
     return (
-        <div className="bg-white text-gray-800 w-full flex-1  border-2  shadow-lg">
+        <div className="bg-white text-gray-800 w-full overflow-x-hidden flex-1  border-2  shadow-lg">
             <Switch>
                 <Route path="/" exact>
                     <Home />

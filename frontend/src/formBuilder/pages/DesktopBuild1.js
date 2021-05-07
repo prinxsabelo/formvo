@@ -9,7 +9,7 @@ import QuestionType from "../questions/components/QuestionType";
 
 const DesktopBuild = () => {
     const { showQuestion, questionDetail, form, currentType, developQuestion,
-        drawerIsOpen, setDrawerIsOpen, setTypeAction, setDrawerPosition } = useContext(Payload);
+        drawerIsOpen, setDrawerIsOpen, setTypeAction,setQDrawerPosition } = useContext(Payload);
     const { q_id } = questionDetail;
 
     const [question, setQuestion] = useState();
@@ -27,7 +27,7 @@ const DesktopBuild = () => {
     }
     const openDrawer = () => {
         setTypeAction("new");
-        setDrawerPosition("right");
+       setQDrawerPosition("right");
         setDrawerIsOpen(true);
     };
     const closeDrawer = () => {

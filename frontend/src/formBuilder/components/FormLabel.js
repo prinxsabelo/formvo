@@ -15,6 +15,7 @@ import {
 import { QuestionContext } from "../../context/QuestionContext";
 
 const FormLabel = (props) => {
+  console.log(props);
   let history = useHistory();
   const {
     drawerIsOpen,

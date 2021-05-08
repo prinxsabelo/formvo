@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Payload } from "../../context/Payload";
 import FormLabel from "../components/FormLabel";
 import BuildHeader from "../components/BuildHeader";
 import Button from "../../shared/collection/Button";
